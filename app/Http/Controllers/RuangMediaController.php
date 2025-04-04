@@ -35,9 +35,11 @@ class RuangMediaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(RuangMedia $ruangMedia)
+    public function show($ruangMedia)
     {
-        return view('ruangMedia.detail');
+        $ruangMedia = RuangMedia::where('id', $ruangMedia)->firstOrFail();
+        // dd($ruangMedia);
+        return view('ruangMedia.detail',compact('ruangMedia'));
     }
 
     /**
