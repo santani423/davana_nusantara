@@ -16,10 +16,23 @@ class PaketController extends Controller
         try {
             $page = $request->input('page', 1);
             $size = $request->input('size', 10);
-            $paket = Paket::paginate($size, ['*'], 'page', $page); 
+            $query = Paket::query();
+
+            if ($request->has('paket_id')) {
+                $query->where('id', $request->input('paket_id'));
+            }
+
+            if ($request->has('wilayah_id') && $request->input('wilayah_id') != null) {
+                $query->join('wilayahs', 'pakets.wilayah_id', '=', 'wilayahs.id')
+                    ->where('wilayahs.id', $request->input('wilayah_id')); 
+            }
+
+            $paket = $query->paginate($size, ['*'], 'page', $page);
+
             return response()->json([
                 'message' => 'List Paket',
-                'data' => $paket
+                'data' => $paket,
+                'wilayah' => $request->input('wilayah_id'),
             ], 200);
         } catch (\Exception $e) {
             return response()->json([

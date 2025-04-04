@@ -29,11 +29,11 @@
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Semua</a>
+                                <a class="nav-link active" aria-current="page" href="#" data-id="">Semua</a>
                             </li>
                             @foreach ($wilayah as $wl)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">{{ $wl->name }}</a>
+                                    <a class="nav-link" href="#" data-id="{{ $wl->id }}">{{ $wl->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -55,14 +55,15 @@
         </div>
     </section>
 @endsection
+
 @section('script')
     <script>
         $(document).ready(function() {
-            function show(page = 1) {
+            function show(page = 1, wilayah_id = null) {
                 $.ajax({
                     url: '{{ route('paket.index') }}',
                     method: 'GET',
-                    data: { page: page },
+                    data: { page: page, wilayah_id: wilayah_id },
                 }).done(function(response) {
                     const data = response?.data?.data || [];
                     const currentPage = response?.data?.current_page || 1;
@@ -144,14 +145,29 @@
             $(document).on('click', '.pagination .page-link', function(e) {
                 e.preventDefault();
                 const page = $(this).data('page');
+                const wilayah_id = $('.nav-link.active').data('id');
                 if (page) {
-                    show(page);
+                    show(page, wilayah_id);
 
-                    // **Scroll ke atas dengan efek animasi**
+                    // Scroll ke atas dengan efek animasi
                     $('html, body').animate({
-                        scrollTop: $('#paket-tur-umum-list').offset().top - 100 // Naik ke atas sedikit
+                        scrollTop: $('#paket-tur-umum-list').offset().top - 100
                     }, 500);
                 }
+            });
+
+            // Handle wilayah click
+            $(document).on('click', '.nav-link', function(e) {
+                e.preventDefault();
+                $('.nav-link').removeClass('active');
+                $(this).addClass('active');
+                const wilayah_id = $(this).data('id');
+                show(1, wilayah_id);
+
+                // Scroll ke atas dengan efek animasi
+                $('html, body').animate({
+                    scrollTop: $('#paket-tur-umum-list').offset().top - 100
+                }, 500);
             });
 
             show(); // Load data on page load

@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Paket;
-use App\Models\PaketTurUmum;
-use App\Models\Wilayah;
+use App\Models\ItemDescPaket;
 use Illuminate\Http\Request;
 
-class PaketTurUmumController extends Controller
+class ItemDescPaketController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       $wilayah = Wilayah::all();
-        return view('paketTurUmum.index', compact('wilayah'));
+        //
     }
 
     /**
@@ -37,18 +34,15 @@ class PaketTurUmumController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(ItemDescPaket $itemDescPaket)
     {
-        $paket = Paket::find($id);
-        // dd($paket);
-      
-        return view('paketTurUmum.detail',compact('paket'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PaketTurUmum $paketTurUmum)
+    public function edit(ItemDescPaket $itemDescPaket)
     {
         //
     }
@@ -56,7 +50,7 @@ class PaketTurUmumController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PaketTurUmum $paketTurUmum)
+    public function update(Request $request, ItemDescPaket $itemDescPaket)
     {
         //
     }
@@ -64,7 +58,7 @@ class PaketTurUmumController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PaketTurUmum $paketTurUmum)
+    public function destroy(ItemDescPaket $itemDescPaket)
     {
         //
     }
