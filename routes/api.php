@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\PaketController;
+use App\Http\Controllers\Api\RuangMediaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::resource('paket', PaketController::class);
+Route::resource('ruangMedia', RuangMediaController::class);

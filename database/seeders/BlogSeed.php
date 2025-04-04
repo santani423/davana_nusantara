@@ -19,6 +19,7 @@ class BlogSeed extends Seeder
                 'title' => 'Blog Title ' . ($i + 1),
                 'code' => 'code' . ($i + 1),
                 'content' => $desc,
+                'resume' => $desc,
                 'thumbnail_img' => 'assets/item/group126.png',
                 'created_at' => now(),
                 'updated_at' => now(),

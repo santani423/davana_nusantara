@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('thumbnail_img');
             $table->string('title');
             $table->string('code');
+            $table->longText('resume');
             $table->longText('content');
             $table->timestamps();
         });
