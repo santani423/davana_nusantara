@@ -17,7 +17,8 @@
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="{{ asset('vitour/assets/images/favico.png') }}" type="image/x-icon">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('vitour/assets/images/favico.png') }}">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
    
     @yield('css')
 </head>
@@ -72,9 +73,9 @@
 
                                                         <li><a href="#">Beranda</a></li>
                                                         <li><a href="{{route('paket-tur-umum.index')}}">Paket Tur Umum</a></li>
-                                                        <li><a href="#">Paket Educational Trip</a></li>
-                                                        <li><a href="#">Ruang Media</a></li>
-                                                        <li><a href="#">Tentang Kami</a></li>
+                                                        <li><a href="{{route('ruang-media.index')}}">Paket Educational Trip</a></li>
+                                                        <li><a href="{{route('ruang-media.index')}}">Ruang Media</a></li>
+                                                        <li><a href="{{route('paket-tur-umum.index')}}">Tentang Kami</a></li>
                                                     </ul>
                                                 </div>
                                             </nav>
@@ -301,6 +302,8 @@
     <script src="{{ asset('vitour/app/js/wow.min.js') }}"></script>
     <script src="{{ asset('vitour/app/js/shortcodes.js') }}"></script>
     <script src="{{ asset('vitour/app/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.min.js" integrity="sha384-Re460s1NeyAhufAM5JwfIGWosokaQ7CH15ti6W5Y4wC/m4eJ5opJ2ivohxVM05Wd" crossorigin="anonymous"></script>
     @yield('script')
 </body>
 

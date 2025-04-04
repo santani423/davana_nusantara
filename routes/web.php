@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaketTurUmumController;
+use App\Http\Controllers\RuangMediaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,4 @@ Route::get('/', function () {
 
 Route::get('/home',[HomeController::class,'index'])->name('home');  
 Route::resource('paket-tur-umum', PaketTurUmumController::class);
+Route::resource('ruang-media', RuangMediaController::class);

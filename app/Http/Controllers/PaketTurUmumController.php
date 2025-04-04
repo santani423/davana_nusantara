@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PaketTurUmum;
+use App\Models\Wilayah;
 use Illuminate\Http\Request;
 
 class PaketTurUmumController extends Controller
@@ -12,8 +13,8 @@ class PaketTurUmumController extends Controller
      */
     public function index()
     {
-       
-        return view('paketTurUmum.index');
+       $wilayah = Wilayah::all();
+        return view('paketTurUmum.index', compact('wilayah'));
     }
 
     /**

@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RuangMedia;
+use App\Models\Wilayah;
 use Illuminate\Http\Request;
 
-class RuangMediaController extends Controller
+class WilayahController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       
-        return view('ruangMedia.index');
+        //
     }
 
     /**
@@ -35,15 +34,15 @@ class RuangMediaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(RuangMedia $ruangMedia)
+    public function show(Wilayah $wilayah)
     {
-        return view('ruangMedia.detail');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(RuangMedia $ruangMedia)
+    public function edit(Wilayah $wilayah)
     {
         //
     }
@@ -51,7 +50,7 @@ class RuangMediaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, RuangMedia $ruangMedia)
+    public function update(Request $request, Wilayah $wilayah)
     {
         //
     }
@@ -59,7 +58,7 @@ class RuangMediaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(RuangMedia $ruangMedia)
+    public function destroy(Wilayah $wilayah)
     {
         //
     }
