@@ -26,4 +26,6 @@ Route::resource('paket-tur-umum', PaketTurUmumController::class);
 Route::resource('ruang-media', RuangMediaController::class);
 
 Route::get('/cms', [CmsController::class, 'index'])->name('cms');
-Route::get('/cms/paket', [CmsController::class, 'index'])->name('cms');
+Route::get('/cms/paket/{code}', [CmsController::class, 'paket'])->name('cms.paket');
+Route::get('/cms/paket/create/{code}', [CmsController::class, 'paketCreate'])->name('cms.paket.create');
+Route::get('/cms/paket/store/{code}', [CmsController::class, 'paketStore'])->name('cms.paket.store');

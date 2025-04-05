@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/themify-icons/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/fontawesome/css/font-awesome.min.css') }}">
 
+    @yield('css')
     <link rel="stylesheet" href="{{ asset('admin/assets/css/main.css') }}" type="text/css">
 </head>
 
@@ -438,27 +439,38 @@
     <script src="{{ asset('admin/assets/bundles/vendorscripts.bundle.js') }}"></script>
 
     <script src="{{ asset('admin/assets/js/theme.js') }}"></script>
+    @yield('script')
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             fetch('/api/type-paket')
                 .then(response => response.json())
                 .then(data => {
-                    
                     const container = $('#paket-tur-umum-list');
-                    console.log(data?.data?.data);
                     
-                    let html = '';
-                    data?.data?.data?.forEach(item => { 
-                        console.log('Processing item:', item);
-                        
-                        html += `<li><a href="#">${item.name}</a></li>`; // Assuming 'name' is a property of each item
-                    });
-                    container.append(html);
-                    
+                    if (data?.data?.data) {
+                        let html = '';
+                        data.data.data.forEach(item => {
+                            console.log('Processing item:', item);
+                            html += `<li><a href="${route('cms/paket', { code: item.code })}">${item.name}</a></li>`;
+                        });
+                        container.append(html);
+                    } else {
+                        console.error('Invalid data structure:', data);
+                    }
                 })
                 .catch(error => console.error('Error fetching type-paket:', error));
         });
+
+        function route(name, params) {
+            let url = `/${name}/${params?.code}`; // Adjust this line based on your routing structure
+            if (params && typeof params === 'object') {
+                Object.keys(params).forEach(key => {
+                    url = url.replace(`:${key}`, params[key]);
+                });
+            }
+            return url;
+        }
     </script>
 </body>
 

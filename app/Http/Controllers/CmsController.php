@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ItemDesc;
+use App\Models\Wilayah;
 use Illuminate\Http\Request;
 
 class CmsController extends Controller
@@ -44,5 +46,39 @@ class CmsController extends Controller
         $query = $request->input('query');
         // Logic to search data
         return view('cms.search', compact('query'));
+    }
+
+
+    function paket($code)
+    { 
+        return view('cms.paket.index', compact('code'));
+    }
+
+    function paketCreate($code)
+    { 
+        $wilayah = Wilayah::all();
+        $ItemDesc = ItemDesc::all();
+        return view('cms.paket.create', compact('code','wilayah','ItemDesc'));
+    }
+
+    function paketStore(Request $request, $code)
+    { 
+        // Logic to store data
+        // return redirect()->route('cms.paket', ['code' => $code]);
+    } 
+
+    function paketEdit($code, $id)
+    { 
+        $wilayah = Wilayah::all();
+        $ItemDesc = ItemDesc::all();
+        return view('cms.paket.edit', compact('code','id','wilayah','ItemDesc'));
+    }
+    function paketShow($code, $id)
+    { 
+        return view('cms.paket.show', compact('code','id'));
+    }
+    function paketDelete($code, $id)
+    { 
+        return view('cms.paket.delete', compact('code','id'));
     }
 }
