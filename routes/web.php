@@ -28,4 +28,5 @@ Route::resource('ruang-media', RuangMediaController::class);
 Route::get('/cms', [CmsController::class, 'index'])->name('cms');
 Route::get('/cms/paket/{code}', [CmsController::class, 'paket'])->name('cms.paket');
 Route::get('/cms/paket/create/{code}', [CmsController::class, 'paketCreate'])->name('cms.paket.create');
-Route::get('/cms/paket/store/{code}', [CmsController::class, 'paketStore'])->name('cms.paket.store');
+Route::post('/cms/paket/store/{code}', [CmsController::class, 'paketStore'])->name('cms.paket.store');
+// saat klik finis kirimkan data yang di input user ke url api dengan ajax dan tambahkan juga loading proses simpan data

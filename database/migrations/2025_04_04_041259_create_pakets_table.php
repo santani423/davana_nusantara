@@ -27,7 +27,7 @@ return new class extends Migration
             $table->boolean('transportation_ticket')->default(1);
             $table->string('code');
             $table->text('description');  
-            $table->decimal('price', 10, 2);   
+            $table->bigInteger('price')->unsigned();  
             $table->timestamps();
         });
     }

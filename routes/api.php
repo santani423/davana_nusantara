@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\RuangMediaController;
 use App\Http\Controllers\Api\TypePaketController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Mockery\Generator\StringManipulation\Pass\Pass;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('paket', PaketController::class);
 Route::resource('ruangMedia', RuangMediaController::class);
-Route::get('/type-paket', [TypePaketController::class, 'index'])->name('type-paket');
+Route::get('/type-paket', [TypePaketController::class, 'index'])->name('type-paket'); 
