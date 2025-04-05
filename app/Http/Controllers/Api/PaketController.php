@@ -67,7 +67,15 @@ class PaketController extends Controller
             //     'start_date_departure' => 'required|date',
             //     'end_date_departure' => 'required|date|after_or_equal:start_date_departure',
             //     'price' => 'required|numeric|min:0',
+            //     'thumbnail_img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             // ]);
+
+            // Upload gambar jika ada
+            $thumbnailPath = 'assets/item/group126.png'; // Default thumbnail
+            if ($request->hasFile('thumbnail_img')) {
+                $file = $request->file('thumbnail_img');
+                $thumbnailPath = $file->store('uploads/thumbnails', 'public');
+            }
 
             // Cari TypePaket berdasarkan code
             $typePaket = TypePaket::where('code', $request->code)->first();
@@ -75,7 +83,7 @@ class PaketController extends Controller
             if (!$typePaket) {
                 return response()->json([
                     'message' => 'Invalid Type Paket code',
-                    'cpde' => $request->code,
+                    'code' => $request->code,
                 ], 400);
             }
 
@@ -84,7 +92,7 @@ class PaketController extends Controller
             $paket->wilayah_id = $request->wilayah_id;
             $paket->type_paket_id = $typePaket->id;
             $paket->name = $request->name;
-            $paket->thumbnail_img = $request->thumbnail_img ?? 'assets/item/group126.png';
+            $paket->thumbnail_img = $thumbnailPath;
             $paket->start_date_departure = $request->start_date_departure;
             $paket->end_date_departure = $request->end_date_departure;
             $paket->hotel_bintang_1 = $request->hotel_bintang_1 ?? 1;

@@ -35,6 +35,7 @@
                             <div class="form-group">
                                 <label for="thumbnail_img">Thumbnail Image *</label>
                                 <input type="file" class="form-control" name="thumbnail_img" id="thumbnail_img" accept="image/*" required onchange="previewImage(event)">
+                                <small class="text-danger" id="thumbnail_error" style="display: none;">Invalid file type. Please upload an image.</small>
                             </div>
 
                             {{-- Preview Section --}}
@@ -149,22 +150,26 @@
 <script src="{{ asset('admin/assets/js/pages/form-wizard.js') }}"></script>
 <script src="{{ asset('admin/assets/vendor/summernote/dist/summernote.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <script>
     function previewImage(event) {
         const input = event.target;
         const preview = document.getElementById('thumbnail_preview');
         const previewButton = document.getElementById('preview_button');
+        const error = document.getElementById('thumbnail_error');
 
         if (input.files && input.files[0]) {
             const file = input.files[0];
+
             if (!file.type.startsWith('image/')) {
-                alert('Only image files are allowed!');
+                error.style.display = 'block';
                 input.value = '';
                 preview.style.display = 'none';
                 previewButton.style.display = 'none';
                 return;
+            } else {
+                error.style.display = 'none';
             }
+
             const reader = new FileReader();
             reader.onload = function (e) {
                 preview.src = e.target.result;
@@ -226,13 +231,13 @@
             processData: false,
             contentType: false,
             success: function (res) {
-                // Swal.fire({
-                //     icon: 'success',
-                //     title: 'Berhasil',
-                //     text: 'Data berhasil disimpan!'
-                // }).then(() => {
-                //     window.location.href = "{{ url('/cms/paket') }}";
-                // });
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: 'Data berhasil disimpan!'
+                }).then(() => {
+                    // window.location.href = "{{ url('/cms/paket') }}";
+                });
             },
             error: function (err) {
                 console.error(err);
@@ -245,4 +250,5 @@
         });
     }
 </script>
+
 @endsection
