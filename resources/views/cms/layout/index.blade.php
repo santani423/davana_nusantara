@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="ThemeMakker">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>:: BigBucket :: Blank Page</title>
+    <title>Buana Nusantara</title>
 
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/themify-icons/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/fontawesome/css/font-awesome.min.css') }}">
@@ -147,6 +147,7 @@
                         <ul id="paket-tur-umum-list">
                         </ul>
                     </li>
+                    <li><a href="{{route('cms.ruang.media')}}"><i class="ti-home"></i><span>Ruang Media</span></a></li>
                     <li>
                         <a href="javascript:void(0)" class="has-arrow"><i
                                 class="ti-pie-chart"></i><span>Charts</span></a>

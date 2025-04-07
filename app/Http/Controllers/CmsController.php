@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ItemDesc;
 use App\Models\Paket;
+use App\Models\RuangMedia;
 use App\Models\Wilayah;
 use Illuminate\Http\Request;
 
@@ -105,5 +106,29 @@ class CmsController extends Controller
     function paketDelete($code, $id)
     {
         return view('cms.paket.delete', compact('code', 'id'));
+    }
+
+
+    function ruangMeida()
+    {
+        return view('cms.ruangMedia.index');
+    }
+    function ruangMediaCreate()
+    {
+        return view('cms.ruangMedia.create');
+    }
+    function ruangMediaStore(Request $request)
+    {
+        // Logic to store data
+        // return redirect()->route('cms.ruang.media');
+    }
+    function ruangMediaEdit($id)
+    {
+        return view('cms.ruang-media.edit', compact('id'));
+    }
+    function ruangMediaShow($code)
+    {
+        $ruangMedia = RuangMedia::where('code', $code)->first();
+        return view('cms.ruangMedia.show', compact('ruangMedia'));
     }
 }

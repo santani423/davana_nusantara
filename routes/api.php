@@ -27,5 +27,10 @@ Route::post('/paket', [PaketController::class, 'store'])->name('paket.store');
 Route::get('/paket/{paket}', [PaketController::class, 'show'])->name('paket.show');
 Route::post('/paket/update/{paket}', [PaketController::class, 'update'])->name('paket.update');
 Route::delete('/paket/{paket}', [PaketController::class, 'destroy'])->name('paket.destroy');
-Route::resource('ruangMedia', RuangMediaController::class);
 Route::get('/type-paket', [TypePaketController::class, 'index'])->name('type-paket'); 
+
+Route::get('/ruang-media', [RuangMediaController::class, 'index'])->name('ruangMedia.index');
+Route::post('/ruang-media', [RuangMediaController::class, 'store'])->name('ruang-media.store');
+Route::get('/ruang-media/{ruangMedia}', [RuangMediaController::class, 'show'])->name('ruang-media.show');
+Route::post('/ruang-media/update/{ruangMedia}', [RuangMediaController::class, 'update'])->name('ruang-media.update');
+Route::delete('/ruang-media/{ruangMedia}', [RuangMediaController::class, 'destroy'])->name('ruang-media.destroy');

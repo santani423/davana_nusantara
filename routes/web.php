@@ -32,3 +32,7 @@ Route::post('/cms/paket/store/{code}', [CmsController::class, 'paketStore'])->na
 Route::get('/cms/paket/show/{code}', [CmsController::class, 'paketShow'])->name('cms.paket.show');
 Route::get('/cms/paket/edit/{code}', [CmsController::class, 'paketEdit'])->name('cms.paket.edit');
 // saat klik finis kirimkan data yang di input user ke url api dengan ajax dan tambahkan juga loading proses simpan data
+Route::get('/cms/ruang_media', [CmsController::class, 'ruangMeida'])->name('cms.ruang.media');
+Route::get('/cms/ruang_media/show/{code}', [CmsController::class, 'ruangMediaShow'])->name('cms.ruang.media.show');
+Route::get('/cms/ruang_media/create', [CmsController::class, 'ruangMediaCreate'])->name('cms.ruang.media.create');
+Route::post('/cms/ruang_media/store', [CmsController::class, 'ruangMediaStore'])->name('cms.ruang.media.store');
