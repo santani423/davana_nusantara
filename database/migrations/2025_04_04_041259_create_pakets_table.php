@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('wilayah_id');  
             $table->integer('type_paket_id');  
             $table->string('thumbnail_img');
+            $table->string('pdf')->nullable();
             $table->string('name');
             $table->string('start_date_departure');
             $table->string('end_date_departure');

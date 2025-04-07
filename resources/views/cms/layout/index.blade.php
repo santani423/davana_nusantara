@@ -11,6 +11,12 @@
 
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/themify-icons/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/fontawesome/css/font-awesome.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous">
+    </script>
+
 
     @yield('css')
     <link rel="stylesheet" href="{{ asset('admin/assets/css/main.css') }}" type="text/css">
@@ -138,7 +144,7 @@
                     <li>
                         <a href="javascript:void(0)" class="has-arrow"><i
                                 class="ti-pie-chart"></i><span>Paket</span></a>
-                        <ul id="paket-tur-umum-list"> 
+                        <ul id="paket-tur-umum-list">
                         </ul>
                     </li>
                     <li>
@@ -439,6 +445,12 @@
     <script src="{{ asset('admin/assets/bundles/vendorscripts.bundle.js') }}"></script>
 
     <script src="{{ asset('admin/assets/js/theme.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.min.js"
+        integrity="sha384-Re460s1NeyAhufAM5JwfIGWosokaQ7CH15ti6W5Y4wC/m4eJ5opJ2ivohxVM05Wd" crossorigin="anonymous">
+    </script>
     @yield('script')
 
     <script>
@@ -447,12 +459,13 @@
                 .then(response => response.json())
                 .then(data => {
                     const container = $('#paket-tur-umum-list');
-                    
+
                     if (data?.data?.data) {
                         let html = '';
                         data.data.data.forEach(item => {
                             console.log('Processing item:', item);
-                            html += `<li><a href="${route('cms/paket', { code: item.code })}">${item.name}</a></li>`;
+                            html +=
+                                `<li><a href="${route('cms/paket', { code: item.code })}">${item.name}</a></li>`;
                         });
                         container.append(html);
                     } else {

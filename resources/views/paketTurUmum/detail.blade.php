@@ -22,14 +22,15 @@
                 <div class="col-md-6">
 
 
-                    <img src="{{ asset('assets/item/Maskgroup2.png') }}" alt="image" style="width: 100%; height: auto;">
+                    <img src="{{ asset($paket->thumbnail_img) }}" alt="image"
+                                            style="width: 100%; height: auto;">
 
 
                 </div>
                 <div class="col-md-6 inner-content-about">
                     <div class="mb-30">
 
-                        <h2 class="title-heading mb-18">Great opportunity for & travels </h2>
+                        <h2 class="title-heading mb-18">{{$paket->name}}</h2>
 
                         <div class="extra">
                             <div class="flex-three">
@@ -143,8 +144,9 @@
                                         /person</h5>
                                 </div>
                                 <div class="d-flex align-items-end ml-auto">
-                                    <button class="btn btn-outline-primary m-3"
-                                        style="border-color: #307EC2; color: #307EC2;">Download PDF</button>
+                                    
+                                    <a href="{{ asset($paket->pdf) }}" class="btn btn-outline-primary m-3"
+                                        style="border-color: #307EC2; color: #307EC2;" download>Download PDF</a>
                                     <button class="btn btn-success m-3">Booking Now</button>
                                 </div>
                             </div>
@@ -171,23 +173,13 @@
                     <div class="tab-pane fade {{ $key == 0 ? 'show active' : '' }}"
                         id="{{ $fasilitas->itemDesc->code }}" role="tabpanel"
                         aria-labelledby="{{ $fasilitas->itemDesc->code }}-tab">
-                        <p>{{ $fasilitas->desc }}</p>
+                         {!! $fasilitas->desc !!} 
                     </div>
                 @endforeach
             </div>
         </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const tabs = document.querySelectorAll('.nav-link');
-                tabs.forEach(tab => {
-                    tab.addEventListener('click', function() {
-                        tabs.forEach(t => t.style.color = '#000');
-                        this.style.color = '#307EC2';
-                    });
-                });
-            });
-        </script>
+      
     </section>
 @endsection
 
@@ -200,4 +192,15 @@
     </style>
 @endsection
 @section('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.nav-link');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.style.color = '#000');
+                this.style.color = '#307EC2';
+            });
+        });
+    });
+</script>
 @endsection

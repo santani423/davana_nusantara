@@ -17,7 +17,7 @@ class PaketTurUmumController extends Controller
        $wilayah = Wilayah::all();
         return view('paketTurUmum.index', compact('wilayah'));
     }
-
+     
     /**
      * Show the form for creating a new resource.
      */
@@ -28,7 +28,7 @@ class PaketTurUmumController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     */
+     */                                                                                                               
     public function store(Request $request)
     {
         //
