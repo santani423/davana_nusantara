@@ -6,7 +6,7 @@
    <section class="slider relative">
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-            @for ($i = 0; $i < 3; $i++)
+            @foreach ($banner as $item)
                 <div class="slider-home1 relative overflow-hidden swiper-slide"
                     style="background-image: url({{ asset('assets/slide/slide.png') }}); background-size: cover; background-position: center;">
 
@@ -14,48 +14,30 @@
                         <div class="tf-container">
                             <div class="row">
                                 <div class="col-lg-8">
-
-                                    <h1 class="title-slide text-white mb-32 fadeInDown wow">5D Japan
-                                        Explore Raja Ampat
-
+                                    <h1 class="title-slide text-white mb-32 fadeInDown wow">
+                                        {{ $item->title }}
                                     </h1>
-                                    <p class="des text-white mb-45 fadeInDown wow">Welcome to our Print
-                                        128
-                                        website! We are
-                                        a
-                                        professional and reliable printing
-                                        company that offers a wide range of printing services to
+                                    <p class="des text-white mb-45 fadeInDown wow">
+                                        {{ $item->description }}
                                     </p>
                                     <div class="btn-group">
-
-                                        <a href="#" class="btn btn-danger btn-lg rounded-pill">
-                                            <p class="btn-main-text">Descover More</p>
+                                        <a href="{{ $item->discover_more }}" class="btn btn-danger btn-lg rounded-pill">
+                                            <p class="btn-main-text">Discover More</p>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="row justify-content-end">
                                 <div class="col-lg-8">
-
-
                                     <div class="tab-content" id="myTabContent">
                                         <div class="tab-pane fade show active" id="new-york-tab-pane"
-                                            role="tabpanel" aria-labelledby="new-york-tab"
-                                            tabindex="0">
+                                            role="tabpanel" aria-labelledby="new-york-tab" tabindex="0">
                                             <div class="row">
-
-                                                <div class="col-6 col-sm-6 col-lg-3 mt-4">
-                                                    <img src="{{ asset('assets/slide/slide.png') }}"
-                                                        alt="" width="100%" height="100%">
-                                                </div>
-                                                <div class="col-6 col-sm-6 col-lg-3 mt-4">
-                                                    <img src="{{ asset('assets/slide/slide.png') }}"
-                                                        alt="" width="100%" height="100%">
-                                                </div>
-                                                <div class="col-6 col-sm-6 col-lg-3 mt-4">
-                                                    <img src="{{ asset('assets/slide/slide.png') }}"
-                                                        alt="" width="100%" height="100%">
-                                                </div>
+                                                @foreach ($item->subBnnerImage as $image)
+                                                    <div class="col-6 col-sm-6 col-lg-3 mt-4">
+                                                        <img src="{{ asset($image->path_img) }}" alt="" width="100%" height="100%">
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -64,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-            @endfor
+            @endforeach
 
         </div>
         <div class="btn-nex-prev">
