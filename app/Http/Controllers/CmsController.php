@@ -122,9 +122,10 @@ class CmsController extends Controller
         // Logic to store data
         // return redirect()->route('cms.ruang.media');
     }
-    function ruangMediaEdit($id)
+    function ruangMediaEdit($code)
     {
-        return view('cms.ruang-media.edit', compact('id'));
+        $media = RuangMedia::where('code', $code)->first();
+        return view('cms.ruangMedia.edit', compact('media','code'));
     }
     function ruangMediaShow($code)
     {

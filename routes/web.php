@@ -36,3 +36,4 @@ Route::get('/cms/ruang_media', [CmsController::class, 'ruangMeida'])->name('cms.
 Route::get('/cms/ruang_media/show/{code}', [CmsController::class, 'ruangMediaShow'])->name('cms.ruang.media.show');
 Route::get('/cms/ruang_media/create', [CmsController::class, 'ruangMediaCreate'])->name('cms.ruang.media.create');
 Route::post('/cms/ruang_media/store', [CmsController::class, 'ruangMediaStore'])->name('cms.ruang.media.store');
+Route::get('/cms/ruang_media/edit/{code}', [CmsController::class, 'ruangMediaEdit'])->name('cms.ruang.media.edit');

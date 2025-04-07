@@ -65,4 +65,56 @@ class RuangMediaController extends Controller
             ], 500);
         }
     }
+
+    function destroy($code)
+    {
+        try {
+            $ruangMedia = RuangMedia::where('code', $code)->first();
+            $ruangMedia->delete();
+
+            return response()->json([
+                'message' => 'Ruang Media deleted successfully',
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to delete ruang media',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+        
+    }
+    public function update(Request $request,$code)
+    {
+        $request->validate([ 
+            'title' => 'required|string|max:255', 
+            'resume' => 'required|string',
+            'content' => 'required|string',
+        ]);
+
+        try {
+            $ruangMedia = RuangMedia::where('code', $code)->first();
+            $thumbnailPath = $ruangMedia->thumbnail_img;
+            if ($request->hasFile('thumbnail_img')) {
+                $file = $request->file('thumbnail_img');
+                $thumbnailPath = 'storage/' .$file->store('uploads/thumbnails', 'public');
+            }
+             
+             
+            $ruangMedia->thumbnail_img = $thumbnailPath;
+            $ruangMedia->title = $request->input('title'); 
+            $ruangMedia->resume = $request->input('resume');
+            $ruangMedia->content = $request->input('content');
+            $ruangMedia->save();
+
+            return response()->json([
+                'message' => 'Ruang Media created successfully',
+                'data' => $ruangMedia,
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to create ruang media',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
 }

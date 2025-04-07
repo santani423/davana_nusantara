@@ -87,7 +87,7 @@
                                 <td><img src="/${item.thumbnail_img || '{{ asset('assets/item/Maskgroup.png') }}'}" alt="thumbnail_img" width="100"></td>
                                 <td>${item.title || '-'}</td> 
                                 <td>
-                                    <a href="/cms/paket/edit/${item.code || '#'}" class="btn btn-primary">Edit</a>
+                                    <a href="/cms/ruang_media/edit/${item.code || '#'}" class="btn btn-primary">Edit</a>
                                     <a href="/cms/ruang_media/show/${item.code || '#'}" class="btn btn-info">Detail</a>
                                     <button class="btn btn-danger btn-delete" data-code="${item.code}">Hapus</button>
                                 </td>
@@ -149,7 +149,7 @@
         $('#deleteConfirmBtn').on('click', function() {
             if (selectedCode) {
                 $.ajax({
-                    url: `/api/paket/${selectedCode}`,
+                    url: `/api/ruang-media/${selectedCode}`,
                     method: 'delete',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
