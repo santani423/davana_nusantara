@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title'); // Judul banner
             $table->string('image_path'); // Path gambar banner
+            $table->string('code'); // Path gambar banner
             $table->string('discover_more')->nullable(); // discover_more banner
             $table->text('description')->nullable(); // Deskripsi banner
             $table->boolean('is_active')->default(true); // Status aktif/tidak

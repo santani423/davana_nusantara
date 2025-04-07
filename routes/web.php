@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CmsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaketTurUmumController;
@@ -37,3 +38,9 @@ Route::get('/cms/ruang_media/show/{code}', [CmsController::class, 'ruangMediaSho
 Route::get('/cms/ruang_media/create', [CmsController::class, 'ruangMediaCreate'])->name('cms.ruang.media.create');
 Route::post('/cms/ruang_media/store', [CmsController::class, 'ruangMediaStore'])->name('cms.ruang.media.store');
 Route::get('/cms/ruang_media/edit/{code}', [CmsController::class, 'ruangMediaEdit'])->name('cms.ruang.media.edit');
+
+
+
+
+Route::get('/cms/Banner', [BannerController::class, 'index'])->name('cms.banner');
+Route::get('/cms/Banner/create', [BannerController::class, 'create'])->name('cms.banner.create');

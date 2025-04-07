@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\PaketController;
 use App\Http\Controllers\Api\RuangMediaController;
 use App\Http\Controllers\Api\TypePaketController;
@@ -34,3 +35,12 @@ Route::post('/ruang-media', [RuangMediaController::class, 'store'])->name('ruang
 Route::get('/ruang-media/{ruangMedia}', [RuangMediaController::class, 'show'])->name('ruang-media.show');
 Route::post('/ruang-media/update/{ruangMedia}', [RuangMediaController::class, 'update'])->name('ruang-media.update');
 Route::delete('/ruang-media/{ruangMedia}', [RuangMediaController::class, 'destroy'])->name('ruang-media.destroy'); 
+
+
+
+
+Route::get('/banner', [BannerController::class, 'index'])->name('banner.index');
+Route::post('/banner', [BannerController::class, 'store'])->name('banner.store');
+Route::get('/banner/{ruangMedia}', [BannerController::class, 'show'])->name('banner.show');
+Route::post('/banner/update/{ruangMedia}', [BannerController::class, 'update'])->name('banner.update');
+Route::delete('/banner/{ruangMedia}', [BannerController::class, 'destroy'])->name('banner.destroy'); 

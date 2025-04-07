@@ -15,9 +15,7 @@
         integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous">
-    </script>
-
-
+    </script> 
     @yield('css')
     <link rel="stylesheet" href="{{ asset('admin/assets/css/main.css') }}" type="text/css">
 </head>
@@ -26,7 +24,7 @@
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
-            <div class="m-t-30"><img src="{{ asset('admin/assets/images/brand/icon_black.svg') }}" width="48"
+            <div class="m-t-30"><img src="{{ asset('assets\logo\logo.svg') }}" width="48"
                     height="48" alt="ArrOw"></div>
             <p>Please wait...</p>
         </div>
@@ -150,14 +148,9 @@
                     <li><a href="{{route('cms.ruang.media')}}"><i class="ti-home"></i><span>Ruang Media</span></a></li>
                     <li>
                         <a href="javascript:void(0)" class="has-arrow"><i
-                                class="ti-pie-chart"></i><span>Charts</span></a>
+                                class="ti-pie-chart"></i><span>Landing Page</span></a>
                         <ul>
-                            <li><a href="chart-c3.html">C3 Chart</a></li>
-                            <li><a href="chartsjs.html">Charts JS</a></li>
-                            <li><a href="chart-flot.html">Flot Chart</a></li>
-                            <li><a href="chart-knob.html">JQuery Knob</a></li>
-                            <li><a href="chart-morris.html">Morris Chart</a></li>
-                            <li><a href="chart-sparkline.html">Sparkline Chart</a></li>
+                            <li><a href="{{route('cms.banner')}}">Banner</a></li> 
                         </ul>
                     </li>
                 </ul>
