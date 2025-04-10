@@ -23,52 +23,52 @@
         <div class="col-lg-12 col-md-12">
             <div class="card planned_task">
                 <div class="header"> 
-                    <h2>Form Tambah Banner</h2>
+                    <h2>Form Edit Banner</h2>
                 </div>
                 <div class="body">
                     <form id="mediaForm" method="POST" enctype="multipart/form-data" novalidate>
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="title">Title <span class="text-danger">*</span></label>
-                            <input type="text" name="title" id="title" class="form-control" required>
+                            <input type="text" name="title" id="title" class="form-control" value="{{ $banner->title }}" required>
                         </div>
                         <div class="form-group">
                             <label for="description">Description <span class="text-danger">*</span></label>
-                            <textarea name="description" id="description" class="form-control" rows="4" required></textarea>
+                            <textarea name="description" id="description" class="form-control" rows="4" required>{{ $banner->description }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="image_path">Main Banner Image <span class="text-danger">*</span></label>
-                            <input type="file" name="image_path" id="image_path" class="form-control" accept="image/*" onchange="previewImage(this, '#main-banner-preview')" required>
-                            <img id="main-banner-preview" src="#" alt="Main Banner Preview" style="display: none; margin-top: 10px; max-height: 200px;">
+                            <input type="file" name="image_path" id="image_path" class="form-control" accept="image/*" onchange="previewImage(this, '#main-banner-preview')">
+                            <img id="main-banner-preview" src="{{ asset($banner->image_path) }}" alt="Main Banner Preview" style="display: block; margin-top: 10px; max-height: 200px;">
                         </div>
                         <div class="form-group">
                             <label for="discover_more">Discover More URL <span class="text-danger">*</span></label>
-                            <input type="text" name="discover_more" id="discover_more" class="form-control" required>
+                            <input type="text" name="discover_more" id="discover_more" class="form-control" value="{{ $banner->discover_more }}" required>
                         </div>
                         <div class="form-group">
                             <label for="sub_banner_1">Sub Banner 1 <span class="text-danger">*</span></label>
-                            <input type="file" name="sub_banner_1" id="sub_banner_1" class="form-control" accept="image/*" onchange="previewImage(this, '#sub-banner-1-preview')" required>
-                            <img id="sub-banner-1-preview" src="#" alt="Sub Banner 1 Preview" style="display: none; margin-top: 10px; max-height: 200px;">
+                            <input type="file" name="sub_banner_1" id="sub_banner_1" class="form-control" accept="image/*" onchange="previewImage(this, '#sub-banner-1-preview')">
+                            <img id="sub-banner-1-preview" src="{{ asset($banner->sub_banner_1) }}" alt="Sub Banner 1 Preview" style="display: block; margin-top: 10px; max-height: 200px;">
                         </div>
                         <div class="form-group">
                             <label for="sub_banner_2">Sub Banner 2 <span class="text-danger">*</span></label>
-                            <input type="file" name="sub_banner_2" id="sub_banner_2" class="form-control" accept="image/*" onchange="previewImage(this, '#sub-banner-2-preview')" required>
-                            <img id="sub-banner-2-preview" src="#" alt="Sub Banner 2 Preview" style="display: none; margin-top: 10px; max-height: 200px;">
+                            <input type="file" name="sub_banner_2" id="sub_banner_2" class="form-control" accept="image/*" onchange="previewImage(this, '#sub-banner-2-preview')">
+                            <img id="sub-banner-2-preview" src="{{ asset($banner->sub_banner_2) }}" alt="Sub Banner 2 Preview" style="display: block; margin-top: 10px; max-height: 200px;">
                         </div>
                         <div class="form-group">
                             <label for="sub_banner_3">Sub Banner 3 <span class="text-danger">*</span></label>
-                            <input type="file" name="sub_banner_3" id="sub_banner_3" class="form-control" accept="image/*" onchange="previewImage(this, '#sub-banner-3-preview')" required>
-                            <img id="sub-banner-3-preview" src="#" alt="Sub Banner 3 Preview" style="display: none; margin-top: 10px; max-height: 200px;">
+                            <input type="file" name="sub_banner_3" id="sub_banner_3" class="form-control" accept="image/*" onchange="previewImage(this, '#sub-banner-3-preview')">
+                            <img id="sub-banner-3-preview" src="{{ asset($banner->sub_banner_3) }}" alt="Sub Banner 3 Preview" style="display: block; margin-top: 10px; max-height: 200px;">
                         </div>
                         <div class="form-group">
                             <label for="is_active">Is Active <span class="text-danger">*</span></label>
                             <select name="is_active" id="is_active" class="form-control" required>
-                                <option value="">-- Pilih Status --</option>
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
+                                <option value="1" {{ $banner->is_active == 1 ? 'selected' : '' }}>Active</option>
+                                <option value="0" {{ $banner->is_active == 0 ? 'selected' : '' }}>Inactive</option>
                             </select>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="simpanData()">Submit</button>
+                        <button type="button" class="btn btn-primary" onclick="updateData()">Update</button>
                     </form>
                 </div>
             </div>
@@ -108,7 +108,7 @@
         }
     }
 
-    function simpanData() {
+    function updateData() {
         const form = document.getElementById('mediaForm');
 
         if (!form.checkValidity()) {
@@ -120,7 +120,7 @@
         $('#loadingModal').modal('show');
 
         $.ajax({
-            url: "{{ url('/api/banner') }}",
+            url: "{{ url('/api/banner/update/' . $banner->id) }}",
             method: "POST",
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -133,7 +133,7 @@
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil',
-                    text: 'Data berhasil disimpan!'
+                    text: 'Data berhasil diperbarui!'
                 }).then(() => {
                     window.location.href = "{{ url('/cms/Banner') }}";
                 });
@@ -144,7 +144,7 @@
                 Swal.fire({
                     icon: 'error',
                     title: 'Gagal!',
-                    text: 'Terjadi kesalahan saat menyimpan data.'
+                    text: 'Terjadi kesalahan saat memperbarui data.'
                 });
             }
         });

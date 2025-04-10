@@ -34,17 +34,19 @@ class BannerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Banner $banner)
+    public function show($banner)
     {
-        //
+        $banner = Banner::where('code', $banner)->first();
+        return view('cms.banner.create');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Banner $banner)
+    public function edit($banner)
     {
-        //
+        $banner = Banner::where('code', $banner)->first();
+        return view('cms.banner.eidt', compact('banner'));
     }
 
     /**

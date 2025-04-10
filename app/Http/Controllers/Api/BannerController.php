@@ -124,7 +124,61 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $request->validate([
+        //     'title' => 'required|string|max:255',
+        //     'image_path' => 'required',
+        //     'discover_more' => 'nullable|string|max:255',
+        //     'description' => 'nullable|string',
+        //     'is_active' => 'required|boolean',
+        //     // 'sub_banner_images' => 'nullable|array',
+        //     // 'sub_banner_images.*.path_img' => 'required_with:sub_banner_images|string|max:255',
+        // ]);
+
+        try {
+            $banner = Banner::where('code', $id)->first();
+            $image_path = $banner->image_path;
+            if ($request->hasFile('image_path')) {
+                $file = $request->file('image_path');
+                $image_path = 'storage/' .$file->store('uploads/banner', 'public');
+            }
+            $banner->title = $request->input('title');
+            $banner->image_path = $image_path;
+            $banner->discover_more = $request->input('discover_more');
+            $banner->description = $request->input('description');
+            $banner->is_active = $request->input('is_active');
+            $banner->code = 'banner' . date('YmdHis') . '_' . rand(1000, 9999);
+            $banner->save();
+
+            // Handle sub-banner images if provided
+            // if ($request->has('sub_banner_images')) {
+            //     foreach ($request->input('sub_banner_images') as $subImage) {
+            //         $banner->subBannerImages()->create([
+            //             'path_img' => $subImage['path_img'],
+            //         ]);
+            //     }
+            // }
+
+            for ($i=1; $i < 3; $i++) { 
+                $subBanner = new SubBannerImage();
+                $subBanner->banner_id = $banner->id;
+                $subBanner->path_img = 'assets/item/group126.png';
+                if ($request->hasFile('sub_banner_images_' . $i)) {
+                    $file = $request->file('sub_banner_images_' . $i);
+                    $subBanner->path_img = 'storage/' .$file->store('uploads/banner', 'public');
+                }
+                $subBanner->save();
+            }
+
+            return response()->json([
+                'message' => 'Banner created successfully',
+                'data' => $banner,
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to create banner',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 
     /**

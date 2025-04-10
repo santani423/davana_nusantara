@@ -15,8 +15,10 @@ class DatabaseSeeder extends Seeder
         $this->call(WilayahSeed::class);
         $this->call(itemDescSeeder::class);
         $this->call(TypePaketSeeder::class);
-        $this->call(PaketSeeder::class);
+        // $this->call(PaketSeeder::class);
         $this->call(BlogSeed::class);
         $this->call(Bannerseeder::class);
+
+        $this->call(LdksSeeder::class);
     }
 }

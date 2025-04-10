@@ -33,7 +33,7 @@
                                         <div class="tab-pane fade show active" id="new-york-tab-pane"
                                             role="tabpanel" aria-labelledby="new-york-tab" tabindex="0">
                                             <div class="row">
-                                                @foreach ($item->subBnnerImage as $image)
+                                                @foreach ($item->SubBannersImage as $image)
                                                     <div class="col-6 col-sm-6 col-lg-3 mt-4">
                                                         <img src="{{ asset($image->path_img) }}" alt="" width="100%" height="100%">
                                                     </div>

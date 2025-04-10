@@ -161,13 +161,13 @@
                             </fieldset>
 
                             {{-- Step 2 - Item Deskripsi --}}
-                            @foreach ($paket->itemDescPaket as $key => $fasilitas)
-                                <h3>{{ $fasilitas->itemDesc->name }}</h3>
-                                <input type="hidden" name="item_desc_id[]" value="{{ $fasilitas->itemDesc->id }}">
+                            @foreach ($paket->itemDescPaket as $key => $itemDescPaket)
+                                <h3>{{ $itemDescPaket->itemDesc->name }}</h3>
+                                <input type="hidden" name="item_desc_id[]" value="{{ $itemDescPaket->id }}">
                                 <fieldset>
                                     <div class="card">
                                         <div class="body">
-                                            <textarea class="summernote" name="deskripsi[]">{!! $fasilitas->desc !!}</textarea>
+                                            <textarea class="summernote" name="deskripsi[]">{!! $itemDescPaket->desc !!}</textarea>
                                         </div>
                                     </div>
                                 </fieldset>

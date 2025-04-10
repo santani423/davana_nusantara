@@ -74,6 +74,7 @@ class CmsController extends Controller
         $wilayah = Wilayah::all();
         $ItemDesc = ItemDesc::all();
         $paket = Paket::where('code', $code)->first();
+        // dd($paket->itemDescPaket);
         $hotel = [
             [
                 'id' => 1,
