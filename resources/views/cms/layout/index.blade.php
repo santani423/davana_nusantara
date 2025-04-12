@@ -151,6 +151,7 @@
                                 class="ti-pie-chart"></i><span>Landing Page</span></a>
                         <ul>
                             <li><a href="{{route('cms.banner')}}">Banner</a></li> 
+                            <li><a href="{{route('cms.setting')}}">Setting</a></li> 
                         </ul>
                     </li>
                 </ul>

@@ -60,7 +60,7 @@ class BannerController extends Controller
             $image_path = 'assets/item/group126.png';
             if ($request->hasFile('image_path')) {
                 $file = $request->file('image_path');
-                $image_path = 'storage/' .$file->store('uploads/banner', 'public');
+                $image_path = 'storage/' . $file->store('uploads/banner', 'public');
             }
             $banner = new Banner();
             $banner->title = $request->input('title');
@@ -80,13 +80,13 @@ class BannerController extends Controller
             //     }
             // }
 
-            for ($i=1; $i < 3; $i++) { 
+            for ($i = 1; $i < 3; $i++) {
                 $subBanner = new SubBannerImage();
                 $subBanner->banner_id = $banner->id;
                 $subBanner->path_img = 'assets/item/group126.png';
                 if ($request->hasFile('sub_banner_images_' . $i)) {
                     $file = $request->file('sub_banner_images_' . $i);
-                    $subBanner->path_img = 'storage/' .$file->store('uploads/banner', 'public');
+                    $subBanner->path_img = 'storage/' . $file->store('uploads/banner', 'public');
                 }
                 $subBanner->save();
             }
@@ -135,18 +135,17 @@ class BannerController extends Controller
         // ]);
 
         try {
-            $banner = Banner::where('code', $id)->first();
+            $banner = Banner::where('id', $id)->first();
             $image_path = $banner->image_path;
             if ($request->hasFile('image_path')) {
                 $file = $request->file('image_path');
-                $image_path = 'storage/' .$file->store('uploads/banner', 'public');
+                $image_path = 'storage/' . $file->store('uploads/banner', 'public');
             }
             $banner->title = $request->input('title');
             $banner->image_path = $image_path;
             $banner->discover_more = $request->input('discover_more');
             $banner->description = $request->input('description');
             $banner->is_active = $request->input('is_active');
-            $banner->code = 'banner' . date('YmdHis') . '_' . rand(1000, 9999);
             $banner->save();
 
             // Handle sub-banner images if provided
@@ -158,24 +157,21 @@ class BannerController extends Controller
             //     }
             // }
 
-            for ($i=1; $i < 3; $i++) { 
-                $subBanner = new SubBannerImage();
-                $subBanner->banner_id = $banner->id;
-                $subBanner->path_img = 'assets/item/group126.png';
-                if ($request->hasFile('sub_banner_images_' . $i)) {
-                    $file = $request->file('sub_banner_images_' . $i);
-                    $subBanner->path_img = 'storage/' .$file->store('uploads/banner', 'public');
+            foreach ($banner->SubBannersImage as $i => $subImage) {
+                if ($request->hasFile('sub_banner_' . $subImage->id)) {
+                    $file = $request->file('sub_banner_' . $subImage->id);
+                    $subImage->path_img = 'storage/' . $file->store('uploads/banner', 'public');
                 }
-                $subBanner->save();
+                $subImage->save();
             }
 
             return response()->json([
-                'message' => 'Banner created successfully',
+                'message' => 'Banner update successfully',
                 'data' => $banner,
             ], 201);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Failed to create banner',
+                'message' => 'Failed to update banner',
                 'error' => $e->getMessage(),
             ], 500);
         }
@@ -184,8 +180,25 @@ class BannerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy($code)
     {
-        //
+        try {
+            $banner = Banner::where('code', $code)->first();
+            if (!$banner) {
+                return response()->json([
+                    'message' => 'Banner not found',
+                ], 404);
+            }
+            $banner->delete();
+
+            return response()->json([
+                'message' => 'Banner deleted successfully',
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to delete banner',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 }

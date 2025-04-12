@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\PaketController;
 use App\Http\Controllers\Api\RuangMediaController;
+use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\TypePaketController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,3 +45,5 @@ Route::post('/banner', [BannerController::class, 'store'])->name('banner.store')
 Route::get('/banner/{ruangMedia}', [BannerController::class, 'show'])->name('banner.show');
 Route::post('/banner/update/{ruangMedia}', [BannerController::class, 'update'])->name('banner.update');
 Route::delete('/banner/{ruangMedia}', [BannerController::class, 'destroy'])->name('banner.destroy'); 
+
+Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');

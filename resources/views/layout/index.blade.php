@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Davana Nusantara</title>
+    <title id="title">Davana Nusantara</title>
 
     <meta name="author" content="themesflat.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vitour/app/css/textanimation.css') }}">
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="{{ asset('vitour/assets/images/favico.png') }}" type="image/x-icon">
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('vitour/assets/images/favico.png') }}">
+    <link rel="shortcut icon" id="favico" href="{{ asset('vitour/assets/images/favico.png') }}" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" id="favico2" href="{{ asset('vitour/assets/images/favico.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
    
@@ -52,112 +52,47 @@
                         <div class="tf-container full">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="inner-container flex justify-space align-center">
+                                    <div class="inner-container flex justify-between align-center">
                                         <!-- Logo Box -->
                                         <div class="mobile-nav-toggler mobie-mt mobile-button">
                                             <i class="icon-Vector3"></i>
                                         </div>
-                                        <div class="logo-box">
+                                        <div class="logo-box" style="margin-right: auto; text-align: left;">
                                             <div class="logo">
-                                                <a href="index.html">
+                                                <a href="{{route('home')}}">
                                                     <img src="{{ asset('assets\logo\logo.svg') }}" alt="Logo">
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="nav-outer flex align-center">
+                                        <div class="nav-outer flex align-center" style="margin: 0 auto;">
                                             <!-- Main Menu -->
                                             <nav class="main-menu show navbar-expand-md">
                                                 <div class="navbar-collapse collapse clearfix"
                                                     id="navbarSupportedContent">
                                                     <ul class="navigation clearfix">
 
-                                                        <li><a href="#">Beranda</a></li>
-                                                        <li><a href="{{route('paket-tur-umum.index')}}">Paket Tur Umum</a></li>
+                                                        <li><a href="{{route('home')}}">Beranda</a></li>
+                                                        <li><a href="{{route('paket-tur-umum.index')}}">Paket Tur</a></li>
                                                         <li><a href="{{route('ruang-media.index')}}">Paket Educational Trip</a></li>
                                                         <li><a href="{{route('ruang-media.index')}}">Ruang Media</a></li>
                                                         <li><a href="{{route('paket-tur-umum.index')}}">Tentang Kami</a></li>
                                                     </ul>
                                                 </div>
                                             </nav>
+                                            
                                             <!-- Main Menu End-->
                                         </div>
-                                        <div class="header-account flex align-center">
-                                            <div class="language">
-                                                <div class="nice-select" tabindex="0">
-                                                    <img src="./assets/images/page/language.svg" alt=""><span
-                                                        class="current">English</span>
-                                                    <ul class="list">
-                                                        <li data-value class="option selected"><img
-                                                                src="./assets/images/page/language.svg"
-                                                                alt="">English
-                                                        </li>
-                                                        <li data-value="Vietnam" class="option"><img
-                                                                src="./assets/images/page/language.svg"
-                                                                alt="">Vietnam
-                                                        </li>
-                                                        <li data-value="German" class="option"><img
-                                                                src="./assets/images/page/language.svg"
-                                                                alt="">German
-                                                        </li>
-                                                        <li data-value="Russian" class="option"><img
-                                                                src="./assets/images/page/language.svg"
-                                                                alt="">Russian
-                                                        </li>
-                                                        <li data-value="Canada" class="option"><img
-                                                                src="./assets/images/page/language.svg"
-                                                                alt="">Canada
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="currency">
-                                                <div class="nice-select" tabindex="0">
-                                                    <span class="current">USD</span>
-                                                    <ul class="list">
-                                                        <li data-value class="option selected">USD</li>
-                                                        <li data-value="vnd" class="option">VND</li>
-                                                        <li data-value="ero" class="option">ERO</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="search-mobie relative">
-                                                <div class="dropdown">
-                                                    <a type="button" class="show-search" data-bs-toggle="dropdown"
-                                                        aria-expanded="false">
-                                                        <i class="icon-Vector5"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu top-search">
-                                                        <form action="/" id="search-bar-widget">
-                                                            <input type="text" placeholder="Search here...">
-                                                            <button type="button"><i
-                                                                    class="icon-search-2"></i></button>
-                                                        </form>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="register">
-                                                <ul class="flex align-center">
-                                                    <li>
-                                                        <a href="login.html" class="flex-three">
-                                                            <img src="./assets/images/page/avata.jpg" alt="image">
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <img src="./assets/images/page/fl1.png" alt="" class="fly-ab">
+                      
                     </div>
                 </div>
 
                 <!-- End Header Lower -->
-                <a href="#" class="header-sidebar flex-three" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                    <i class="icon-Bars"></i>
-                </a>
+          
 
                 <!-- Mobile Menu  -->
                 <div class="close-btn"><span class="icon flaticon-cancel-1"></span></div>
@@ -185,17 +120,15 @@
                 <div class="tf-container">
                     <div class="footer-main">
                         <div class="row">
-                            <div class="col-md-3">
-
-                                <div class="logo-footer">
-                                    <img src="{{ asset('assets/logo/logo1.png') }}" alt="">
+                            <div class="col-md-2"> 
+                                <div class="logo-footer" id ="logo-footer">
+                                  
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
 
-                                <h5 class="title">Headquarter</h5>
-                                <p class="des-footer">The world’s first and largest digital market
-                                    for crypto collectibles and non-fungible
+                                <h5 class="title">Alamat </h5>
+                                <p class="des-footer text-white" id="addres"> 
                                 </p>
                                 <ul class="footer-info">
                                     <li class="flex-three">
@@ -212,7 +145,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
 
                                 <h5 class="title">Navigation</h5>
                                 <ul class="footer-menu text-white">
@@ -233,31 +166,16 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 
                                     <h5 class="title">Get in touch</h5>
-                                    <h3 class="text-white">021 345 678 910</h3>
-                                    <ul class="social-ft flex-three">
-                                        <li>
-                                            <a href="#">
-                                                <i class="icon-icon-2"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="icon-x"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="icon-8"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="icon-2"></i>
-                                            </a>
-                                        </li>
+                                    <h3 class="text-white" id="phone">021 345 678 910</h3>
+                                   <div id="email" class="text-white" ></div>
+                                    <ul class="social-ft flex-three mt-4" style="gap: 15px; display: flex;">
+                                        <li id="instagram"></li> 
+                                        <li id="tiktok"></li> 
+                                        <li id="facebook"></li> 
+                                        <li id="youtube"></li> 
                                     </ul>
                                 
                             </div>
@@ -282,9 +200,8 @@
     <!-- Modal Popup Bid -->
 
     {{-- <a id="scroll-top" class="button-go"></a> --}}
-    <a href="https://wa.me/yourphonenumber" target="_blank">
-        <img src="{{ asset('assets/item/logos_whatsapp-icon.png') }}" alt="WhatsApp" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; width: 60px; height: 60px;">
-    </a>
+ 
+    <div id="whatsapp"></div>
 
     <!-- Javascript -->
     <script src="{{ asset('vitour/app/js/jquery.min.js') }}"></script>
@@ -304,6 +221,70 @@
     <script src="{{ asset('vitour/app/js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.min.js" integrity="sha384-Re460s1NeyAhufAM5JwfIGWosokaQ7CH15ti6W5Y4wC/m4eJ5opJ2ivohxVM05Wd" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize the nice select plugin
+            function show(p) {
+            $.ajax({
+                url: '{{ route('setting.index') }}',
+                method: 'GET',
+                 
+            }).done(function(response) {
+                
+                console.log(response);
+                let settings = response.data;
+                let addres = document.getElementById('addres');
+                addres.innerHTML = settings.address || '-';
+                let phone = document.getElementById('phone');
+                phone.innerHTML = settings.phone || '-';
+                let email = document.getElementById('email');
+                email.innerHTML = ` <a href="mailto:${settings.email}" class="flex-three text-white" style="text-decoration: none; color: black;">
+                                             <img src="{{asset('assets/item/email.png')}}" style="width: 30px;" class="ml-2" alt="">   
+                                        ${settings.email || '-'} 
+                                    </a>`;
+                let instagram = document.getElementById('instagram');
+                instagram.innerHTML = ` <a href="mailto:${settings.instagram}" class="flex-three text-white" style="text-decoration: none; color: black;">
+                                             <img src="{{asset('assets/item/instagram.png')}}" style="width: 30px;" class="ml-2" alt="">   
+                                        
+                                    </a>`;
+                let tiktok = document.getElementById('tiktok');
+                tiktok.innerHTML = ` <a href="mailto:${settings.tiktok}" class="flex-three text-white" style="text-decoration: none; color: black;">
+                                             <img src="{{asset('assets/item/tiktok.png')}}" style="width: 30px;" class="ml-2" alt="">   
+                                        
+                                    </a>`;
+                let facebook = document.getElementById('facebook');
+                facebook.innerHTML = ` <a href="mailto:${settings.facebook}" class="flex-three text-white" style="text-decoration: none; color: black;">
+                                             <img src="{{asset('assets/item/facebook.png')}}" style="width: 30px;" class="ml-2" alt="">   
+                                        
+                                    </a>`;
+                let youtube = document.getElementById('youtube');
+                youtube.innerHTML = ` <a href="mailto:${settings.youtube}" class="flex-three text-white" style="text-decoration: none; color: black;">
+                                             <img src="{{asset('assets/item/youtube.png')}}" style="width: 40px;" class="ml-2" alt=""> 
+                                    </a>`;
+                let whatsapp = document.getElementById('whatsapp');
+                whatsapp.innerHTML = `    <a href="https://wa.me/${settings.whatsapp}" target="_blank">
+                    <img src="{{ asset('assets/item/logos_whatsapp-icon.png') }}" alt="WhatsApp" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; width: 60px; height: 60px;">
+                </a>`;
+                let logofooter = document.getElementById('logo-footer');
+                logofooter.innerHTML = `<img src="{{ asset('${settings.logo}') }}" alt="">`;
+              
+                let favico = document.getElementById('favico');
+                favico.href =  '{{ asset('${settings.favicon}') }}';
+                let favico2 = document.getElementById('favico2');
+                favico2.href =  '{{ asset('${settings.favicon}') }}';
+
+                
+
+                
+            }).fail(function(xhr, status, error) {
+                console.error('Error:', error);
+            });
+        }
+
+        show(1); // Call the function to load data on page load
+        });
+    </script>
     @yield('script')
 </body>
 

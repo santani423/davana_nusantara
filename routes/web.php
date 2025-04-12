@@ -5,6 +5,7 @@ use App\Http\Controllers\CmsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaketTurUmumController;
 use App\Http\Controllers\RuangMediaController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,3 +46,6 @@ Route::get('/cms/ruang_media/edit/{code}', [CmsController::class, 'ruangMediaEdi
 Route::get('/cms/Banner', [BannerController::class, 'index'])->name('cms.banner');
 Route::get('/cms/Banner/create', [BannerController::class, 'create'])->name('cms.banner.create');
 Route::get('/cms/Banner/edit/{banner}', [BannerController::class, 'edit'])->name('cms.banner.edit');
+
+
+Route::get('/cms/setting', [SettingController::class, 'index'])->name('cms.setting');
