@@ -49,17 +49,17 @@
                         <div class="form-group">
                             <label for="sub_banner_1">Sub Banner 1 <span class="text-danger">*</span></label>
                             <input type="file" name="sub_banner_1" id="sub_banner_1" class="form-control" accept="image/*" onchange="previewImage(this, '#sub-banner-1-preview')">
-                            <img id="sub-banner-1-preview" src="{{ asset($banner->sub_banner_1) }}" alt="Sub Banner 1 Preview" style="display: block; margin-top: 10px; max-height: 200px;">
+                            <img id="sub-banner-1-preview" src="{{ asset($banner->SubBannersImage[0]->path_img) }}" alt="Sub Banner 1 Preview" style="display: block; margin-top: 10px; max-height: 200px;">
                         </div>
                         <div class="form-group">
                             <label for="sub_banner_2">Sub Banner 2 <span class="text-danger">*</span></label>
                             <input type="file" name="sub_banner_2" id="sub_banner_2" class="form-control" accept="image/*" onchange="previewImage(this, '#sub-banner-2-preview')">
-                            <img id="sub-banner-2-preview" src="{{ asset($banner->sub_banner_2) }}" alt="Sub Banner 2 Preview" style="display: block; margin-top: 10px; max-height: 200px;">
+                            <img id="sub-banner-2-preview" src="{{ asset($banner->SubBannersImage[1]->path_img) }}" alt="Sub Banner 2 Preview" style="display: block; margin-top: 10px; max-height: 200px;">
                         </div>
                         <div class="form-group">
                             <label for="sub_banner_3">Sub Banner 3 <span class="text-danger">*</span></label>
                             <input type="file" name="sub_banner_3" id="sub_banner_3" class="form-control" accept="image/*" onchange="previewImage(this, '#sub-banner-3-preview')">
-                            <img id="sub-banner-3-preview" src="{{ asset($banner->sub_banner_3) }}" alt="Sub Banner 3 Preview" style="display: block; margin-top: 10px; max-height: 200px;">
+                            <img id="sub-banner-3-preview" src="{{ asset($banner->SubBannersImage[2]->path_img) }}" alt="Sub Banner 3 Preview" style="display: block; margin-top: 10px; max-height: 200px;">
                         </div>
                         <div class="form-group">
                             <label for="is_active">Is Active <span class="text-danger">*</span></label>

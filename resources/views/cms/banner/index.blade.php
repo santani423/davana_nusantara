@@ -93,8 +93,8 @@
                                     `).join('') || '-'}
                                 </td>
                                 <td>
-                                    <a href="/cms/ruang_media/edit/${item.code || '#'}" class="btn btn-primary">Edit</a>
-                                    <a href="/cms/ruang_media/show/${item.code || '#'}" class="btn btn-info">Detail</a>
+                                    <a href="/cms/Banner/edit/${item.code || '#'}" class="btn btn-primary">Edit</a>
+                                    
                                     <button class="btn btn-danger btn-delete" data-code="${item.code}">Hapus</button>
                                 </td>
                             </tr>`; 
@@ -155,7 +155,7 @@
         $('#deleteConfirmBtn').on('click', function() {
             if (selectedCode) {
                 $.ajax({
-                    url: `/api/ruang-media/${selectedCode}`,
+                    url: `/api/banner/${selectedCode}`,
                     method: 'delete',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'

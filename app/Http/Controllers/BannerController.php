@@ -45,8 +45,9 @@ class BannerController extends Controller
      */
     public function edit($banner)
     {
-        $banner = Banner::where('code', $banner)->first();
-        return view('cms.banner.eidt', compact('banner'));
+        $banner = Banner::where('code', $banner)->first(); 
+        // dd($banner);
+        return view('cms.banner.edit', compact('banner'));
     }
 
     /**
