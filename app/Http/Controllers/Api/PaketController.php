@@ -37,6 +37,7 @@ class PaketController extends Controller
             }
             
             $typePaket = TypePaket::where('code', $request->type_paket)->first();
+            // dd($typePaket);
             if ($typePaket) {
                 $query->join('type_pakets', 'pakets.type_paket_id', '=', 'type_pakets.id')
                     ->where('type_pakets.id', $typePaket->id);

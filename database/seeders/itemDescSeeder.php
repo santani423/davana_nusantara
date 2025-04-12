@@ -16,6 +16,8 @@ class itemDescSeeder extends Seeder
         DB::table('item_descs')->insert([
             ['name' => 'Tempat', 'code' => 'tmp'],
             ['name' => 'Fasilitas', 'code' => 'fts'], 
+            ['name' => 'Kegiatan', 'code' => 'kgt'], 
+            ['name' => 'Destinasi', 'code' => 'des'], 
         ]);
         // DB::table('item_descs')->insert([
         //     ['name' => 'Destinasi', 'code' => 'des'],
