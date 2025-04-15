@@ -35,7 +35,7 @@
                 <div class="col-lg-4 col-12">
                     <div class="side-bar-right">
                         <div class="sidebar-widget">
-                            <div id="paket-tur-umum-list"> 
+                            <div id="paket-list"> 
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                     const data = response?.data?.data || [];
                     const currentPage = response?.data?.current_page || 1;
                     const lastPage = response?.data?.last_page || 1;
-                    const container = $('#paket-tur-umum-list');
+                    const container = $('#paket-list');
                     container.empty();
 
                     data.forEach(function(item) {
@@ -84,7 +84,7 @@
                                                 <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z"/>
                                             </svg>${new Date(item?.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) || 'Unknown'}</span>
                                 <h5 class="entry-title">
-                                    <a href="${'{{ route('paket-tur-umum.show', '') }}'.replace('', item.id)}">${item.title}</a>
+                                    <a href="${'{{ route('paket.show', '') }}'.replace('', item.id)}">${item.title}</a>
                                 </h5>
                                 <div class="review" style="max-height: 100px; overflow: hidden; text-overflow: ellipsis;">
                                     ${item.resume || ''}
@@ -142,7 +142,7 @@
 
                     // Scroll ke atas dengan efek animasi
                     $('html, body').animate({
-                        scrollTop: $('#paket-tur-umum-list').offset().top - 100
+                        scrollTop: $('#paket-list').offset().top - 100
                     }, 500);
                 }
             });
@@ -157,7 +157,7 @@
 
                 // Scroll ke atas dengan efek animasi
                 $('html, body').animate({
-                    scrollTop: $('#paket-tur-umum-list').offset().top - 100
+                    scrollTop: $('#paket-list').offset().top - 100
                 }, 500);
             });
 

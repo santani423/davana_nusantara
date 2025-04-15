@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Paket;
-use App\Models\PaketTurUmum;
-use App\Models\Wilayah;
+use App\Models\TourPackage;
 use Illuminate\Http\Request;
 
-class PaketTurUmumController extends Controller
+class TourPackageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       $wilayah = Wilayah::all();
-        return view('paketTurUmum.index', compact('wilayah'));
+        //
     }
-     
+
     /**
      * Show the form for creating a new resource.
      */
@@ -28,7 +25,7 @@ class PaketTurUmumController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     */                                                                                                               
+     */
     public function store(Request $request)
     {
         //
@@ -37,18 +34,15 @@ class PaketTurUmumController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($code)
+    public function show(TourPackage $tourPackage)
     {
-        $paket = Paket::where('code',$code)->first();
-        // dd($paket);
-      
-        return view('paketTurUmum.detail',compact('paket'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PaketTurUmum $paketTurUmum)
+    public function edit(TourPackage $tourPackage)
     {
         //
     }
@@ -56,7 +50,7 @@ class PaketTurUmumController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PaketTurUmum $paketTurUmum)
+    public function update(Request $request, TourPackage $tourPackage)
     {
         //
     }
@@ -64,7 +58,7 @@ class PaketTurUmumController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PaketTurUmum $paketTurUmum)
+    public function destroy(TourPackage $tourPackage)
     {
         //
     }

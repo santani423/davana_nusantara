@@ -63,59 +63,59 @@
             <div class="col-lg-12">
                 <div class="center m0-auto w-text-heading">
 
-                    <h3 class="title-heading ">Jelajahi setiap sudut Indonesia bersama Daffana
-                        Nusantara </h3>
+                    <h3 class="title-heading ">{{$package->desc}} </h3>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 mx-auto mb-3">
                 <div class="position-relative">
-                    <img src="{{ asset('assets/slide/slide.png') }}" alt="" class="rounded"
-                        style="border-radius: 15px;">
+                    <img src="{{ asset($package->img_1) }}" alt="" class="rounded"
+                        style="border-radius: 15px; width: 100%;">
                     <div class="position-absolute bottom-0 start-0 text-white p-2">
-                        <h5 class="text-white">Title 1</h5>
+                        <h5 class="text-white">{{$package->title_img_1}}</h5>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 mx-auto">
                 <div class="row">
+                  
                     <div class="col-md-6 mb-2">
                         <div class="position-relative">
-                            <img src="{{ asset('assets/slide/slide.png') }}" alt=""
-                                class="rounded" style="border-radius: 15px;">
+                            <img src="{{ asset($package->img_2) }}" alt=""
+                                class="rounded" style="border-radius: 15px; width: 100%;">
                             <div class="position-absolute bottom-0 start-0 text-white p-2">
-                                <h5 class="text-white">Title 2</h5>
+                                <h5 class="text-white">{{$package->title_img_2}}r</h5>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                     <div class="col-md-6 mb-2">
                         <div class="position-relative">
-                            <img src="{{ asset('assets/slide/slide.png') }}" alt=""
-                                class="rounded" style="border-radius: 15px;">
+                            <img src="{{ asset($package->img_3) }}" alt=""
+                                class="rounded" style="border-radius: 15px; width: 100%;">
                             <div class="position-absolute bottom-0 start-0 text-white p-2">
-                                <h5 class="text-white">Title 3</h5>
+                                <h5 class="text-white">{{$package->title_img_3}}r</h5>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                     <div class="col-md-6 mb-2">
                         <div class="position-relative">
-                            <img src="{{ asset('assets/slide/slide.png') }}" alt=""
-                                class="rounded" style="border-radius: 15px;">
+                            <img src="{{ asset($package->img_4) }}" alt=""
+                                class="rounded" style="border-radius: 15px; width: 100%;">
                             <div class="position-absolute bottom-0 start-0 text-white p-2">
-                                <h5 class="text-white">Title 4</h5>
+                                <h5 class="text-white">{{$package->title_img_4}}r</h5>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                     <div class="col-md-6 mb-2">
                         <div class="position-relative">
-                            <img src="{{ asset('assets/slide/slide.png') }}" alt=""
-                                class="rounded" style="border-radius: 15px;">
+                            <img src="{{ asset($package->img_5) }}" alt=""
+                                class="rounded" style="border-radius: 15px; width: 100%;">
                             <div class="position-absolute bottom-0 start-0 text-white p-2">
-                                <h5 class="text-white">Title 5</h5>
+                                <h5 class="text-white">{{$package->title_img_5}}r</h5>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
             <div class="mt-4 text-center">
@@ -175,12 +175,12 @@
                             <div class="col-lg-12 relative">
                                 <div class="swiper serviceSwiper relative overflow-hidden pb-60">
                                     <div class="swiper-wrapper">
-                                        @for ($i = 0; $i <= 10; $i++)
+                                        @foreach ($paket as $item)
                                             <div class="swiper-slide">
                                                 <div class="tour-listing box-sd">
-                                                    <a href="tour-single.html" class="tour-listing-image">
+                                                    <a href="{{route('paket.show',$item->code)}}" class="tour-listing-image">
 
-                                                        <img src="{{ asset('assets/item/group126.png') }}"
+                                                        <img src="{{ asset($item->thumbnail_img) }}"
                                                             alt="Image Listing">
 
                                                     </a>
@@ -191,32 +191,31 @@
                                                                 <path
                                                                     d="M12.166 8.94c-.26.35-.578.77-.927 1.23-.774.99-1.675 2.06-2.239 2.727a.58.58 0 0 1-.86 0c-.564-.667-1.465-1.737-2.239-2.727a31.634 31.634 0 0 1-.927-1.23C4.478 7.98 4 6.92 4 6a4 4 0 1 1 8 0c0 .92-.478 1.98-1.834 2.94zM8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
                                                             </svg>
-                                                            Jawa Barat</span>
-                                                        <h3 class="title-tour-list"><a href="tour-single.html">6
-                                                                nights From
-                                                                Moscow</a>
+                                                            {{$item->wilayah->name}}</span>
+                                                        <h3 class="title-tour-list">
+                                                            <a href="{{route('paket.show',$item->code)}}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+                                                                {{$item->name}}
+                                                            </a>
                                                         </h3>
-                                                        <div class="review">
-                                                            <span>(1 Review)</span>
-                                                        </div>
+                                                        
                                                         <div class="icon-box flex-three">
 
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-8">
-                                                                <h5 style="color: orange;">IDR 1,76jt</h5>
-                                                                <h6 style="color: orange;">/person</h6>
+                                                                <h5 style="color: orange;">{{ 'Rp ' . number_format($item->price, 0, ',', '.') }}</h5>
+                                                                <h6 style="color: orange;">/Orang</h6>
                                                             </div>
                                                             <div class="col-4 d-flex justify-content-end align-items-center"
                                                                 style="text-align: right;">
-                                                                <img src="{{ asset('assets/item/group74.svg') }}"
-                                                                    alt="" style="width: 50px; height: 50px;">
+                                                                <a href="{{route('paket.show',$item->code)}}" class="tour-listing-image">   <img src="{{ asset('assets/item/group74.svg') }}"
+                                                                    alt="" style="width: 50px; height: 50px;"> </a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endfor
+                                        @endforeach
                                     </div>
                                     <div class="swiper-pagination"></div>
                                 </div>

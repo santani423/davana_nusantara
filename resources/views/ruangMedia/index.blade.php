@@ -19,7 +19,7 @@
         <div class="container">
             
             <hr>
-            <div class="row" id="paket-tur-umum-list">
+            <div class="row" id="paket-list">
                 <!-- Data akan dimuat melalui AJAX -->
             </div>
         </div>
@@ -50,7 +50,7 @@
                     const data = response?.data?.data || [];
                     const currentPage = response?.data?.current_page || 1;
                     const lastPage = response?.data?.last_page || 1;
-                    const container = $('#paket-tur-umum-list');
+                    const container = $('#paket-list');
                     container.empty();
 
                     data.forEach(function(item) {
@@ -69,7 +69,7 @@
                                             ${new Date(item?.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) || 'Unknown'}
                                         </span>
                                         <h3 class="title-tour-list">
-                                            <a href="{{ route('paket-tur-umum.show', '') }}/${item.id}">${item.title}</a>
+                                            <a href="{{ route('paket.show', '') }}/${item.id}">${item.title}</a>
                                         </h3>
                                         <div class="review" style="max-height: 100px; overflow: hidden; text-overflow: ellipsis;">
                                              ${item.resume}  
@@ -128,7 +128,7 @@
 
                     // Scroll ke atas dengan efek animasi
                     $('html, body').animate({
-                        scrollTop: $('#paket-tur-umum-list').offset().top - 100
+                        scrollTop: $('#paket-list').offset().top - 100
                     }, 500);
                 }
             });
@@ -143,7 +143,7 @@
 
                 // Scroll ke atas dengan efek animasi
                 $('html, body').animate({
-                    scrollTop: $('#paket-tur-umum-list').offset().top - 100
+                    scrollTop: $('#paket-list').offset().top - 100
                 }, 500);
             });
 

@@ -72,10 +72,10 @@
                                                     <ul class="navigation clearfix">
 
                                                         <li><a href="{{route('home')}}">Beranda</a></li>
-                                                        <li><a href="{{route('paket-tur-umum.index')}}">Paket Tur</a></li>
+                                                        <li><a href="{{route('paket.index')}}">Paket Tur</a></li>
                                                         <li><a href="{{route('ruang-media.index')}}">Paket Educational Trip</a></li>
                                                         <li><a href="{{route('ruang-media.index')}}">Ruang Media</a></li>
-                                                        <li><a href="{{route('paket-tur-umum.index')}}">Tentang Kami</a></li>
+                                                        <li><a href="{{route('paket.index')}}">Tentang Kami</a></li>
                                                     </ul>
                                                 </div>
                                             </nav>

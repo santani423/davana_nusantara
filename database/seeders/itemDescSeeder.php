@@ -14,10 +14,10 @@ class itemDescSeeder extends Seeder
     public function run(): void
     {
         DB::table('item_descs')->insert([
-            ['name' => 'Tempat', 'code' => 'tmp'],
-            ['name' => 'Fasilitas', 'code' => 'fts'], 
-            ['name' => 'Kegiatan', 'code' => 'kgt'], 
-            ['name' => 'Destinasi', 'code' => 'des'], 
+            ['name' => 'Tempat', 'code' => 'tmp', 'img' => 'assets/item/group126.png'],
+            ['name' => 'Fasilitas', 'code' => 'fts', 'img' => 'assets/item/group126.png'],
+            ['name' => 'Kegiatan', 'code' => 'kgt', 'img' => 'assets/item/group126.png'],
+            ['name' => 'Destinasi', 'code' => 'des', 'img' => 'assets/item/group126.png'],
         ]);
         // DB::table('item_descs')->insert([
         //     ['name' => 'Destinasi', 'code' => 'des'],

@@ -41,7 +41,7 @@
                 </div>
             </nav>
             <hr>
-            <div class="row" id="paket-tur-umum-list">
+            <div class="row" id="paket-list">
                 <!-- Data akan dimuat melalui AJAX -->
             </div>
         </div>
@@ -68,14 +68,14 @@
                     const data = response?.data?.data || [];
                     const currentPage = response?.data?.current_page || 1;
                     const lastPage = response?.data?.last_page || 1;
-                    const container = $('#paket-tur-umum-list');
+                    const container = $('#paket-list');
                     container.empty();
 
                     data.forEach(function(item) {
                         const html = `
                             <div class="col-md-3 mb-3">
                                 <div class="tour-listing box-sd">
-                                    <a href="{{ route('paket-tur-umum.show', '') }}/${item.id}" class="tour-listing-image">
+                                    <a href="{{ route('paket.show', '') }}/${item.id}" class="tour-listing-image">
                                         <img src="${item.thumbnail_img}" alt="${item.name}" class="img-fluid">
                                     </a>
                                     <div class="tour-listing-content">
@@ -86,7 +86,7 @@
                                             ${item?.wilayah?.name || 'Unknown'}
                                         </span>
                                         <h3 class="title-tour-list">
-                                            <a href="{{ route('paket-tur-umum.show', '') }}/${item.id}">${item.name}</a>
+                                            <a href="{{ route('paket.show', '') }}/${item.id}">${item.name}</a>
                                         </h3>
                                         <div class="review">
                                             <span>(${item.reviews_count} Reviews)</span>
@@ -151,7 +151,7 @@
 
                     // Scroll ke atas dengan efek animasi
                     $('html, body').animate({
-                        scrollTop: $('#paket-tur-umum-list').offset().top - 100
+                        scrollTop: $('#paket-list').offset().top - 100
                     }, 500);
                 }
             });
@@ -166,7 +166,7 @@
 
                 // Scroll ke atas dengan efek animasi
                 $('html, body').animate({
-                    scrollTop: $('#paket-tur-umum-list').offset().top - 100
+                    scrollTop: $('#paket-list').offset().top - 100
                 }, 500);
             });
 

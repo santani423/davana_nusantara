@@ -142,7 +142,7 @@
                     <li>
                         <a href="javascript:void(0)" class="has-arrow"><i
                                 class="ti-pie-chart"></i><span>Paket</span></a>
-                        <ul id="paket-tur-umum-list">
+                        <ul id="paket-list">
                         </ul>
                     </li>
                     <li><a href="{{route('cms.ruang.media')}}"><i class="ti-home"></i><span>Ruang Media</span></a></li>
@@ -453,7 +453,7 @@
             fetch('/api/type-paket')
                 .then(response => response.json())
                 .then(data => {
-                    const container = $('#paket-tur-umum-list');
+                    const container = $('#paket-list');
 
                     if (data?.data?.data) {
                         let html = '';
