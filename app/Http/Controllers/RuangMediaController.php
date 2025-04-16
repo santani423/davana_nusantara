@@ -37,7 +37,7 @@ class RuangMediaController extends Controller
      */
     public function show($ruangMedia)
     {
-        $ruangMedia = RuangMedia::where('id', $ruangMedia)->firstOrFail();
+        $ruangMedia = RuangMedia::where('code', $ruangMedia)->firstOrFail();
         // dd($ruangMedia);
         return view('ruangMedia.detail',compact('ruangMedia'));
     }

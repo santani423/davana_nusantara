@@ -61,7 +61,7 @@
         $(document).ready(function() {
             function show(page = 1, wilayah_id = null) {
                 $.ajax({
-                    url: '{{ route('paket.index') }}',
+                    url: '/api/paket',
                     method: 'GET',
                     data: { page: page, wilayah_id: wilayah_id },
                 }).done(function(response) {

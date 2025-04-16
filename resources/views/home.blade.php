@@ -273,25 +273,24 @@
                             <div class="col-lg-12 relative top-this-week-slide">
                                 <div class="swiper populer-activities overflow-hidden">
                                     <div class="swiper-wrapper">
-                                        @for ($i = 0; $i <= 10; $i++)
+                                        @foreach ($ruangMedia as $item)
                                             <div class="swiper-slide">
                                                 <div class="tour-listing box-sd">
-                                                    <a href="tour-single.html" class="tour-listing-image">
+                                                    <a href="{{route('ruang-media.show',$item->code)}}" class="tour-listing-image">
 
-                                                        <img src="{{ asset('assets/item/group126.png') }}"
+                                                        <img src="{{ asset($item->thumbnail_img) }}"
                                                             alt="Image Listing">
 
                                                     </a>
                                                     <div class="tour-listing-content">
 
-                                                        <h3 class="title-tour-list"><a href="tour-single.html">6
-                                                                nights From
-                                                                Moscow</a>
+                                                        <h3 class="title-tour-list"><a href="{{route('ruang-media.show',$item->code)}}">{{$item->title}}</a>
                                                         </h3> 
+                                                        <p>{{ $item->created_at->format('M d, Y') }}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endfor
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="swiper-button-next"></div>

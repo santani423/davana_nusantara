@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Paket;
+use App\Models\RuangMedia;
 use App\Models\TourPackage;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,9 @@ class HomeController extends Controller
         $paket = Paket::orderBy('created_at', 'desc')
             ->select('*')
             ->paginate(10);
-        return view('home', compact('banner', 'package','paket'));
+        $ruangMedia = RuangMedia::orderBy('created_at', 'desc')
+            ->select('*')
+            ->paginate(10);
+        return view('home', compact('banner', 'package','paket','ruangMedia'));
     }
 }
