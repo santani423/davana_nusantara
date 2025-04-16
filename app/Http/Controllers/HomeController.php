@@ -23,4 +23,9 @@ class HomeController extends Controller
             ->paginate(10);
         return view('home', compact('banner', 'package','paket','ruangMedia'));
     }
+
+    function abautAs()
+    {
+        return view('about-as');
+    }
 }

@@ -26,6 +26,7 @@ Route::get('/', function () {
 Route::get('/home',[HomeController::class,'index'])->name('home');  
 Route::resource('paket', PaketTurUmumController::class);
 Route::resource('ruang-media', RuangMediaController::class);
+Route::get('/about-as',[HomeController::class,'abautAs'])->name('about.as');  
 
 Route::get('/cms', [CmsController::class, 'index'])->name('cms');
 Route::get('/cms/paket/{code}', [CmsController::class, 'paket'])->name('cms.paket');

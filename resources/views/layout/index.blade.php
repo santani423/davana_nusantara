@@ -73,9 +73,9 @@
 
                                                         <li><a href="{{route('home')}}">Beranda</a></li>
                                                         <li><a href="{{route('paket.index')}}">Paket Tur</a></li>
-                                                        <li><a href="{{route('ruang-media.index')}}">Paket Educational Trip</a></li>
+                                                        {{-- <li><a href="{{route('ruang-media.index')}}">Paket Educational Trip</a></li> --}}
                                                         <li><a href="{{route('ruang-media.index')}}">Ruang Media</a></li>
-                                                        <li><a href="{{route('paket.index')}}">Tentang Kami</a></li>
+                                                        <li><a href="{{route('about.as')}}">Tentang Kami</a></li>
                                                     </ul>
                                                 </div>
                                             </nav>
@@ -184,9 +184,7 @@
 
                     <div class="row footer-bottom">
                         <div class="col-md-12 text-center">
-                            <p class="copy-right">Copyright © 2024 by <a href="#"
-                                    class="text-main">Themesflat.</a> All
-                                Rights Reserved</p>
+                            <p class="copy-right">Copyright © 2025 Daffana Nusantara - All Right Reserved. Design by LaWavedesign.com - Disclaimer</p>
                         </div>
                     </div>
                 </div>
