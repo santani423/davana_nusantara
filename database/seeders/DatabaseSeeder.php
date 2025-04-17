@@ -24,5 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(WisataSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(TourPackageSeeder::class);
+        $this->call(AboutAsSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

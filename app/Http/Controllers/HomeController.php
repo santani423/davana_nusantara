@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutUs;
 use App\Models\Banner;
 use App\Models\Paket;
 use App\Models\RuangMedia;
 use App\Models\TourPackage;
+use App\Models\TypePaket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -26,6 +29,17 @@ class HomeController extends Controller
 
     function abautAs()
     {
-        return view('about-as');
+        $aboutAs = AboutUs::first();
+        $typePaket = TypePaket::get();
+        $count = [];
+        foreach ($typePaket as $key => $value) {
+            $paket = DB::table('pakets')
+                ->where('type_paket_id', $value->id)
+                ->count();
+            $count[$key]['type_paket'] = $value->name;
+            $count[$key]['count'] = $paket;
+            $count[$key]['id'] = $value->id;
+        } 
+        return view('about-as', compact('aboutAs', 'typePaket', 'count'));
     }
 }

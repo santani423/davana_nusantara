@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CmsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaketTurUmumController;
 use App\Http\Controllers\RuangMediaController;
 use App\Http\Controllers\SettingController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +29,10 @@ Route::get('/home',[HomeController::class,'index'])->name('home');
 Route::resource('paket', PaketTurUmumController::class);
 Route::resource('ruang-media', RuangMediaController::class);
 Route::get('/about-as',[HomeController::class,'abautAs'])->name('about.as');  
+
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
+
 
 Route::get('/cms', [CmsController::class, 'index'])->name('cms');
 Route::get('/cms/paket/{code}', [CmsController::class, 'paket'])->name('cms.paket');

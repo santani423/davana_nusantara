@@ -12,7 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('about_us', function (Blueprint $table) {
-            $table->id();
+            $table->id(); 
+            $table->text('video')->nullable(); // Path gambar banner
+            $table->string('code')->nullable(); // Path gambar banner
+            $table->string('discover_more')->nullable(); // discover_more banner
+            $table->text('description')->nullable(); // Deskripsi banner 
+            $table->string('customer')->nullable(); // discover_more banner
+            $table->string('personal_team')->nullable(); // discover_more banner
+            $table->string('destinasi_tour')->nullable(); // discover_more banner
             $table->timestamps();
         });
     }

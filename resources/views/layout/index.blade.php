@@ -9,14 +9,14 @@
     <meta name="author" content="themesflat.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <!-- Favicon and Touch Icons  -->
+    <link rel="shortcut icon" id="favico" href="{{ asset('assets/logo/logo1.png') }}" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" id="favico2" href="{{ asset('assets/logo/logo1.png') }}">
     <link rel="stylesheet" href="{{ asset('vitour/app/css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vitour/app/css/magnific-popup.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vitour/app/css/jquery.fancybox.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vitour/app/css/textanimation.css') }}">
 
-    <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" id="favico" href="{{ asset('vitour/assets/images/favico.png') }}" type="image/x-icon">
-    <link rel="apple-touch-icon-precomposed" id="favico2" href="{{ asset('vitour/assets/images/favico.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
    
