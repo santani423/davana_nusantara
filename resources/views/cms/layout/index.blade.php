@@ -98,8 +98,8 @@
                                 class="fa fa-list"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <h6 class="dropdown-header">User menu</h6>
-                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                    class="fa fa-user text-primary"></i>My Profile</a>
+                            <a class="dropdown-item" href="{{route('profile')}}"><i
+                                    class="fa fa-user text-primary"></i>Profile</a>
                             {{-- <a class="dropdown-item" href="javascript:void(0);"><span
                                     class="float-right badge badge-success">$50K</span><i
                                     class="fa fa-briefcase text-primary"></i>My Balance</a>

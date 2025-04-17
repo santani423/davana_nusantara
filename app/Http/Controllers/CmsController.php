@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ItemDesc;
 use App\Models\Paket;
 use App\Models\RuangMedia;
+use App\Models\User;
 use App\Models\Wilayah;
 use Illuminate\Http\Request;
 
@@ -132,5 +133,33 @@ class CmsController extends Controller
     {
         $ruangMedia = RuangMedia::where('code', $code)->first();
         return view('cms.ruangMedia.show', compact('ruangMedia'));
+    }
+
+    function profile()
+    {
+        $user = User::find(auth()->id());
+        // dd($user);
+        return view('cms.profile.index', compact('user'));
+    }
+
+    function profileUpdate(Request $request)
+    {
+        $user = User::find(auth()->id());
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->input('password'));
+        }
+
+        $user->save();
+
+        return redirect()->route('profile')->with('success', 'Profile updated successfully.');
     }
 }
