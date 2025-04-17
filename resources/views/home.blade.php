@@ -211,7 +211,7 @@
                                                     style="text-align: right;">
                                                     <a href="{{ route('paket.show', $item->code) }}"
                                                         class="tour-listing-image"> <img
-                                                            src="{{ asset('assets/item/group74.svg') }}" alt=""
+                                                            src="{{ asset('assets/item/Group74.svg') }}" alt=""
                                                             style="width: 50px; height: 50px;"> </a>
                                                 </div>
                                             </div>
