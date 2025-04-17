@@ -57,7 +57,7 @@
                         const html = `
                             <div class="col-md-3 mb-3">
                                 <div class="tour-listing box-sd">
-                                    <a href="{{ route('ruang-media.show', '') }}/${item.id}" class="tour-listing-image">
+                                    <a href="{{ route('ruang-media.show', '') }}/${item.code}" class="tour-listing-image">
                                         <img src="${item.thumbnail_img}" alt="${item.title}" class="img-fluid">
                                     </a>
                                     <div class="tour-listing-content">
@@ -69,7 +69,7 @@
                                             ${new Date(item?.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) || 'Unknown'}
                                         </span>
                                         <h3 class="title-tour-list">
-                                            <a href="{{ route('paket.show', '') }}/${item.id}">${item.title}</a>
+                                            <a href="{{ route('paket.show', '') }}/${item.code}">${item.title}</a>
                                         </h3>
                                         <div class="review" style="max-height: 100px; overflow: hidden; text-overflow: ellipsis;">
                                              ${item.resume}  

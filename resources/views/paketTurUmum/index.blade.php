@@ -75,7 +75,7 @@
                         const html = `
                             <div class="col-md-3 mb-3">
                                 <div class="tour-listing box-sd">
-                                    <a href="{{ route('paket.show', '') }}/${item.id}" class="tour-listing-image">
+                                    <a href="{{ route('paket.show', '') }}/${item.code}" class="tour-listing-image">
                                         <img src="${item.thumbnail_img}" alt="${item.name}" class="img-fluid">
                                     </a>
                                     <div class="tour-listing-content">
@@ -86,7 +86,7 @@
                                             ${item?.wilayah?.name || 'Unknown'}
                                         </span>
                                         <h3 class="title-tour-list">
-                                            <a href="{{ route('paket.show', '') }}/${item.id}">${item.name}</a>
+                                            <a href="{{ route('paket.show', '') }}/${item.code}">${item.name}</a>
                                         </h3>
                                         <div class="review">
                                             <span>(${item.reviews_count} Reviews)</span>

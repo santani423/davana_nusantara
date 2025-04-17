@@ -26,8 +26,8 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');  
-Route::resource('paket', PaketTurUmumController::class)->middleware('auth');
-Route::resource('ruang-media', RuangMediaController::class)->middleware('auth');
+Route::resource('paket', PaketTurUmumController::class);
+Route::resource('ruang-media', RuangMediaController::class);
 Route::get('/about-as', [HomeController::class, 'abautAs'])->name('about.as');  
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
