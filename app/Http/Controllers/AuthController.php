@@ -16,7 +16,7 @@ class AuthController extends Controller
 
         // Cek kredensial pengguna
         if (auth()->attempt($request->only('email', 'password'))) {
-            return redirect()->intended('dashboard')->with('success', 'Login berhasil!');
+            return redirect()->route('cms')->with('success', 'Login berhasil!');
         }
 
         return back()->withErrors([
@@ -27,10 +27,11 @@ class AuthController extends Controller
     public function logout()
     {
         auth()->logout();
-        return redirect('/')->with('success', 'Logout berhasil!');
+        return redirect()->route('auth.login')->with('success', 'Logout berhasil!');
     }
     public function showLoginForm()
     {
         return view('auth.login');
-    } 
+    }
+
 }

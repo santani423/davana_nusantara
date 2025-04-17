@@ -25,34 +25,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home',[HomeController::class,'index'])->name('home');  
-Route::resource('paket', PaketTurUmumController::class);
-Route::resource('ruang-media', RuangMediaController::class);
-Route::get('/about-as',[HomeController::class,'abautAs'])->name('about.as');  
-
+Route::get('/home', [HomeController::class, 'index'])->name('home');  
+Route::resource('paket', PaketTurUmumController::class)->middleware('auth');
+Route::resource('ruang-media', RuangMediaController::class)->middleware('auth');
+Route::get('/about-as', [HomeController::class, 'abautAs'])->name('about.as');  
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
+// Group routes that require authentication
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/cms', [CmsController::class, 'index'])->name('cms');
+    Route::get('/cms/paket/{code}', [CmsController::class, 'paket'])->name('cms.paket');
+    Route::get('/cms/paket/create/{code}', [CmsController::class, 'paketCreate'])->name('cms.paket.create');
+    Route::post('/cms/paket/store/{code}', [CmsController::class, 'paketStore'])->name('cms.paket.store');
+    Route::get('/cms/paket/show/{code}', [CmsController::class, 'paketShow'])->name('cms.paket.show');
+    Route::get('/cms/paket/edit/{code}', [CmsController::class, 'paketEdit'])->name('cms.paket.edit');
+    Route::get('/cms/ruang_media', [CmsController::class, 'ruangMeida'])->name('cms.ruang.media');
+    Route::get('/cms/ruang_media/show/{code}', [CmsController::class, 'ruangMediaShow'])->name('cms.ruang.media.show');
+    Route::get('/cms/ruang_media/create', [CmsController::class, 'ruangMediaCreate'])->name('cms.ruang.media.create');
+    Route::post('/cms/ruang_media/store', [CmsController::class, 'ruangMediaStore'])->name('cms.ruang.media.store');
+    Route::get('/cms/ruang_media/edit/{code}', [CmsController::class, 'ruangMediaEdit'])->name('cms.ruang.media.edit');
 
-Route::get('/cms', [CmsController::class, 'index'])->name('cms');
-Route::get('/cms/paket/{code}', [CmsController::class, 'paket'])->name('cms.paket');
-Route::get('/cms/paket/create/{code}', [CmsController::class, 'paketCreate'])->name('cms.paket.create');
-Route::post('/cms/paket/store/{code}', [CmsController::class, 'paketStore'])->name('cms.paket.store');
-Route::get('/cms/paket/show/{code}', [CmsController::class, 'paketShow'])->name('cms.paket.show');
-Route::get('/cms/paket/edit/{code}', [CmsController::class, 'paketEdit'])->name('cms.paket.edit');
-// saat klik finis kirimkan data yang di input user ke url api dengan ajax dan tambahkan juga loading proses simpan data
-Route::get('/cms/ruang_media', [CmsController::class, 'ruangMeida'])->name('cms.ruang.media');
-Route::get('/cms/ruang_media/show/{code}', [CmsController::class, 'ruangMediaShow'])->name('cms.ruang.media.show');
-Route::get('/cms/ruang_media/create', [CmsController::class, 'ruangMediaCreate'])->name('cms.ruang.media.create');
-Route::post('/cms/ruang_media/store', [CmsController::class, 'ruangMediaStore'])->name('cms.ruang.media.store');
-Route::get('/cms/ruang_media/edit/{code}', [CmsController::class, 'ruangMediaEdit'])->name('cms.ruang.media.edit');
+    Route::get('/cms/Banner', [BannerController::class, 'index'])->name('cms.banner');
+    Route::get('/cms/Banner/create', [BannerController::class, 'create'])->name('cms.banner.create');
+    Route::get('/cms/Banner/edit/{banner}', [BannerController::class, 'edit'])->name('cms.banner.edit');
 
-
-
-
-Route::get('/cms/Banner', [BannerController::class, 'index'])->name('cms.banner');
-Route::get('/cms/Banner/create', [BannerController::class, 'create'])->name('cms.banner.create');
-Route::get('/cms/Banner/edit/{banner}', [BannerController::class, 'edit'])->name('cms.banner.edit');
-
-
-Route::get('/cms/setting', [SettingController::class, 'index'])->name('cms.setting');
+    Route::get('/cms/setting', [SettingController::class, 'index'])->name('cms.setting');
+});

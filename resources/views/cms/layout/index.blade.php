@@ -32,29 +32,29 @@
 
     <nav class="navbar custom-navbar navbar-expand-lg py-2">
         <div class="container-fluid px-0">
-            <a href="javascript:void(0);" class="menu_toggle"><i class="fa fa-align-left"></i></a>
-            <a href="index.html" class="navbar-brand"><img src="{{ asset('admin/assets/images/brand/icon.svg') }}"
-                    alt="BigBucket" />
-                <strong>Big</strong> Bucket</a>
+            {{-- <a href="javascript:void(0);" class="menu_toggle"><i class="fa fa-align-left"></i></a> --}}
+            {{-- <a href="index.html" class="navbar-brand"><img src="{{ asset('admin/assets/images/brand/icon.svg') }}"
+                    alt="BigBucket" /> --}}
+                {{-- <strong>Big</strong> Bucket</a> --}}
             <div id="navbar_main">
-                <ul class="navbar-nav mr-auto hidden-xs">
+                {{-- <ul class="navbar-nav mr-auto hidden-xs">
                     <li class="nav-item page-header">
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item active">Stater Page</li>
                         </ul>
                     </li>
-                </ul>
+                </ul> --}}
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item hidden-xs">
+                    {{-- <li class="nav-item hidden-xs">
                         <form class="form-inline main_search">
                             <input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search..."
                                 aria-label="Search">
                         </form>
-                    </li>
-                    <li class="nav-item"><a class="nav-link nav-link-icon" href="javascript:void(0);"><i
-                                class="fa fa-cogs"></i></a></li>
-                    <li class="nav-item dropdown">
+                    </li> --}}
+                    {{-- <li class="nav-item"><a class="nav-link nav-link-icon" href="javascript:void(0);"><i
+                                class="fa fa-cogs"></i></a></li> --}}
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link nav-link-icon" href="javascript:void(0);" id="navbar_1_dropdown_2"
                             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
                                 class="fa fa-bell"></i></a>
@@ -91,7 +91,7 @@
                                     notifications</a>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-link-icon" href="javascript:void(0);" id="navbar_1_dropdown_3"
                             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -100,18 +100,22 @@
                             <h6 class="dropdown-header">User menu</h6>
                             <a class="dropdown-item" href="javascript:void(0);"><i
                                     class="fa fa-user text-primary"></i>My Profile</a>
-                            <a class="dropdown-item" href="javascript:void(0);"><span
+                            {{-- <a class="dropdown-item" href="javascript:void(0);"><span
                                     class="float-right badge badge-success">$50K</span><i
                                     class="fa fa-briefcase text-primary"></i>My Balance</a>
                             <a class="dropdown-item" href="javascript:void(0);"><span
                                     class="float-right badge badge-warning">4</span><i
                                     class="fa fa-envelope text-primary"></i>Inbox</a>
                             <a class="dropdown-item" href="javascript:void(0);"><i
-                                    class="fa fa-cog text-primary"></i>Settings</a>
+                                    class="fa fa-cog text-primary"></i>Settings</a> --}}
                             <div class="dropdown-divider" role="presentation"></div>
-                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                    class="fa fa-sign-out text-primary"></i>Sign
-                                out</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" 
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out text-primary"></i>Sign out
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                 </ul>
@@ -154,6 +158,7 @@
                             <li><a href="{{route('cms.setting')}}">Setting</a></li> 
                         </ul>
                     </li>
+                  
                 </ul>
             </nav>
         </div>
