@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title id="title">Davana Nusantara</title>
+    <title id="title">Daffana Nusantara</title>
 
     <meta name="author" content="themesflat.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -70,12 +70,11 @@
                                                 <div class="navbar-collapse collapse clearfix"
                                                     id="navbarSupportedContent">
                                                     <ul class="navigation clearfix">
-
-                                                        <li><a href="{{route('home')}}">Beranda</a></li>
-                                                        <li><a href="{{route('paket.index')}}">Paket Tur</a></li>
-                                                        {{-- <li><a href="{{route('ruang-media.index')}}">Paket Educational Trip</a></li> --}}
-                                                        <li><a href="{{route('ruang-media.index')}}">Ruang Media</a></li>
-                                                        <li><a href="{{route('about.as')}}">Tentang Kami</a></li>
+                                                    <li><a href="{{route('home')}}" style="text-decoration: none;">Beranda</a></li>
+                                                    <li><a href="{{route('paket.index')}}" style="text-decoration: none;">Paket Tur</a></li>
+                                                    {{-- <li><a href="{{route('ruang-media.index')}}" style="text-decoration: none;">Paket Educational Trip</a></li> --}}
+                                                    <li><a href="{{route('ruang-media.index')}}" style="text-decoration: none;">Ruang Media</a></li>
+                                                    <li><a href="{{route('about.as')}}" style="text-decoration: none;">Tentang Kami</a></li>
                                                     </ul>
                                                 </div>
                                             </nav>
@@ -261,7 +260,8 @@
                                              <img src="{{asset('assets/item/youtube.png')}}" style="width: 40px;" class="ml-2" alt=""> 
                                     </a>`;
                 let whatsapp = document.getElementById('whatsapp');
-                whatsapp.innerHTML = `    <a href="https://wa.me/${settings.whatsapp}" target="_blank">
+                let whatsappNumber = settings.whatsapp.startsWith('0') ? '62' + settings.whatsapp.substring(1) : settings.whatsapp;
+                whatsapp.innerHTML = `    <a href="https://wa.me/${whatsappNumber}" target="_blank">
                     <img src="{{ asset('assets/item/logos_whatsapp-icon.png') }}" alt="WhatsApp" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; width: 60px; height: 60px;">
                 </a>`;
                 let logofooter = document.getElementById('logo-footer');

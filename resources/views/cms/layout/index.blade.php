@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="ThemeMakker">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>Buana Nusantara</title>
+    <title>Daffana Nusantara</title>
 
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/themify-icons/themify-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/fontawesome/css/font-awesome.min.css') }}">

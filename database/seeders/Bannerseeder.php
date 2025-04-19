@@ -15,7 +15,7 @@ class Bannerseeder extends Seeder
         for ($i=0; $i < 5; $i++) { 
            // Insert sample data into the banners table
         $bannerId = DB::table('banners')->insertGetId([
-            'title' => 'Welcome to Davana Nusantara '.$i,
+            'title' => 'Welcome to Daffana Nusantara '.$i,
             'image_path' => 'assets/slide/slide.png',
             'code' => 'banner_'.$i,
             'discover_more' => 'https://example.com/discover',

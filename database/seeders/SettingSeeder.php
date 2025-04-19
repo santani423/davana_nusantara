@@ -19,7 +19,7 @@ class SettingSeeder extends Seeder
             'description' => 'Platform perjalanan terbaik di Indonesia.',
             'keywords' => 'travel, nusantara, perjalanan, wisata',
             'address' => 'Jl. Merdeka No. 123, Jakarta',
-            'phone' => '+62 812 3456 7890',
+            'phone' => '6285218898727',
             'email' => 'info@davananusantara.com',
             'social_media' => json_encode([
                 'facebook' => 'https://facebook.com/davananusantara',
@@ -27,7 +27,7 @@ class SettingSeeder extends Seeder
                 'twitter' => 'https://twitter.com/davananusantara',
             ]),
             'google_map' => 'https://maps.google.com/?q=-6.200000,106.816666',
-            'whatsapp' => '+62 812 3456 7890',
+            'whatsapp' => '6285218898727',
             'instagram' => 'https://instagram.com/davananusantara',
             'facebook' => 'https://facebook.com/davananusantara',
             'twitter' => 'https://twitter.com/davananusantara',
