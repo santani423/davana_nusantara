@@ -88,7 +88,7 @@
                             </div>
                             <div class="py-3 text-center">
                                 <a href="javascript:void(0);" class="link link-sm link--style-3">View all
-                                    </a>
+                                    notifications</a>
                             </div>
                         </div>
                     </li> --}}
