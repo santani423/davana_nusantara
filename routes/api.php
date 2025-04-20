@@ -24,7 +24,7 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 //     return $request->user();
 // });
 
-Route::get('/paket', [PaketController::class, 'index'])->name('paket.index');
+Route::get('/paket', [PaketController::class, 'index'])->name('api.paket.index');
 Route::post('/paket', [PaketController::class, 'store'])->name('paket.store');
 Route::get('/paket/{paket}', [PaketController::class, 'show'])->name('paket.show');
 Route::post('/paket/update/{paket}', [PaketController::class, 'update'])->name('paket.update');

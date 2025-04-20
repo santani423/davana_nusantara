@@ -9,8 +9,7 @@
                     <h2>{{ $code }}</h2>
                     <a href="{{ route('cms.paket.create', $code) }}" class="btn btn-primary float-right">Add Paket</a>
                 </div>
-                <div class="body">
-                    <h4>Starter Page</h4>
+                <div class="body"> 
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -68,7 +67,7 @@
 
         function show(page = 1, wilayah_id = null) {
             $.ajax({
-                url: '{{ route('paket.index') }}',
+                url: '{{ route('api.paket.index') }}',
                 method: 'GET',
                 data: {
                     page: page,
