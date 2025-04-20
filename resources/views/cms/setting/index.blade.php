@@ -7,34 +7,35 @@
             <div class="card planned_task">
                 <div class="body">
                     <h4>Setting</h4>
-                    <form action=" " method="POST">
+                    <form action=" " method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @foreach($settings->toArray() as $key => $value)
                             @if(!in_array($key, ['id', 'created_at', 'updated_at']))
                                 <div class="form-group">
                                     <label for="{{ $key }}">{{ ucfirst(str_replace('_', ' ', $key)) }}</label>
-                                    <input 
-                                        type="text" 
-                                        class="form-control" 
-                                        id="{{ $key }}" 
-                                        name="{{ $key }}" 
-                                        value="{{ old($key, $value) }}" 
-                                        placeholder="Enter {{ str_replace('_', ' ', $key) }}">
+                                    @if($key === 'logo' || $key === 'favicon')
+                                        <input 
+                                            type="file" 
+                                            class="form-control" 
+                                            id="{{ $key }}" 
+                                            name="{{ $key }}" 
+                                            accept="image/*"
+                                            onchange="previewImage(event, '{{ $key }}')">
+                                        <div class="mt-2">
+                                            <img id="preview-{{ $key }}" src="{{ $value ? asset( $value) : '' }}" alt="Preview {{ $key }}" style="max-height: 100px;">
+                                        </div>
+                                    @else
+                                        <input 
+                                            type="text" 
+                                            class="form-control" 
+                                            id="{{ $key }}" 
+                                            name="{{ $key }}" 
+                                            value="{{ old($key, $value) }}" 
+                                            placeholder="Enter {{ str_replace('_', ' ', $key) }}">
+                                    @endif
                                 </div>
                             @endif
-                        @endforeach
-                        @foreach($settings as $key => $value)
-                            <div class="form-group">
-                                <label for="{{ $key }}">{{ ucfirst(str_replace('_', ' ', $key)) }}</label>
-                                <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    id="{{ $key }}" 
-                                    name="{{ $key }}" 
-                                    value="{{ old($key, $value) }}" 
-                                    placeholder="Enter {{ str_replace('_', ' ', $key) }}">
-                            </div>
                         @endforeach
                         
                         <button type="submit" class="btn btn-primary">Save Settings</button>
@@ -44,4 +45,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    function previewImage(event, key) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            const output = document.getElementById('preview-' + key);
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 @endsection
