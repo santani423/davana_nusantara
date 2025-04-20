@@ -7,7 +7,7 @@
             <div class="card planned_task">
                 <div class="body">
                     <h4>Setting</h4>
-                    <form action=" " method="POST" enctype="multipart/form-data">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         @foreach($settings->toArray() as $key => $value)
