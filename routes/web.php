@@ -55,4 +55,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/cms/Banner/edit/{banner}', [BannerController::class, 'edit'])->name('cms.banner.edit');
 
     Route::get('/cms/setting', [SettingController::class, 'index'])->name('cms.setting');
+    Route::put('/cms/setting', [SettingController::class, 'update'])->name('cms.setting.update');
 });
