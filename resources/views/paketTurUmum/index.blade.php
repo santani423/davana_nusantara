@@ -85,21 +85,72 @@
                                             </svg>
                                             ${item?.wilayah?.name || 'Unknown'}
                                         </span>
-                                        <h3 class="title-tour-list">
-                                            <a href="{{ route('paket.show', '') }}/${item.code}">${item.name}</a>
-                                        </h3>
-                                        <div class="review">
-                                            <span>(${item.reviews_count} Reviews)</span>
-                                        </div>
+                                       <h3 class="title-tour-list">
+                                              <p  
+                                                  style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; color: #000; font-weight: bold;">
+                                                  ${item.name}
+                                              </p>
+                                          </h3>
+                                       
                                         <div class="row">
-                                            <div class="col-8">
-                                                <h5 style="color: orange;">IDR ${item.price}</h5>
-                                                <h6 style="color: orange;">/person</h6>
+                                                <div class="col-8">
+                                                    <p style="color: gray;">Start From</p>
+                                                    <h5 style="color: orange;">
+                                                        Rp. ${new Intl.NumberFormat('id-ID').format(item.price)}</h5>
+                                                    <h6 style="color: orange;">/Orang</h6>
+                                                </div>
+                                                <div class="col-4 d-flex justify-content-end align-items-center"
+                                                    style="text-align: right;">
+                                                    <a href="{{ route('paket.show', '') }}/${item.code}"
+                                                        class="tour-listing-image"> <img
+                                                            src="{{ asset('assets/item/Group74.svg') }}" alt=""
+                                                            style="width: 50px; height: 50px;"> </a>
+                                                </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>`;
+                        // const html = `<div class="swiper-slide">
+                        //             <div class="tour-listing box-sd">
+                        //                 <a href="{{ route('paket.show', '') }}/${item.code}" class="tour-listing-image">
+
+                        //                     <img src="${item.thumbnail_img}" alt="Image Listing">
+
+                        //                 </a>
+                        //                 <div class="tour-listing-content">
+                        //                     <span class="map"> <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                        //                             height="16" fill="currentColor" class="bi bi-geo-alt me-2"
+                        //                             viewBox="0 0 16 16">
+                        //                             <path
+                        //                                 d="M12.166 8.94c-.26.35-.578.77-.927 1.23-.774.99-1.675 2.06-2.239 2.727a.58.58 0 0 1-.86 0c-.564-.667-1.465-1.737-2.239-2.727a31.634 31.634 0 0 1-.927-1.23C4.478 7.98 4 6.92 4 6a4 4 0 1 1 8 0c0 .92-.478 1.98-1.834 2.94zM8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+                        //                         </svg>
+                        //                           ${item?.wilayah?.name || 'Unknown'}</span>
+                        //                     <h3 class="title-tour-list">
+                        //                         <p  
+                        //                             style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; color: #000; font-weight: bold;">
+                        //                             ${item.name}
+                        //                         </p>
+                        //                     </h3>
+
+                                            
+                        //                     <div class="row">
+                        //                         <div class="col-8">
+                        //                             <p style="color: gray;">Start From</p>
+                        //                             <h5 style="color: orange;">
+                        //                                 ${item.price}</h5>
+                        //                             <h6 style="color: orange;">/Orang</h6>
+                        //                         </div>
+                        //                         <div class="col-4 d-flex justify-content-end align-items-center"
+                        //                             style="text-align: right;">
+                        //                             <a href="{{ route('paket.show', '') }}/${item.code}"
+                        //                                 class="tour-listing-image"> <img
+                        //                                     src="{{ asset('assets/item/Group74.svg') }}" alt=""
+                        //                                     style="width: 50px; height: 50px;"> </a>
+                        //                         </div>
+                        //                     </div>
+                        //                 </div>
+                        //             </div>
+                        //         </div>`
                         container.append(html);
                     });
 
