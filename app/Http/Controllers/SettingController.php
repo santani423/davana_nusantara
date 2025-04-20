@@ -133,7 +133,7 @@ class SettingController extends Controller
             // dd($settings);
             return redirect()->route('cms.setting')->with(['success' => 'Settings updated successfully']);
         } catch (\Exception $e) {
-            dd($e);
+            // dd($e);
             return redirect()->back()->with(['error' => 'Failed to update settings: ' . $e->getMessage()]);
         }
     }

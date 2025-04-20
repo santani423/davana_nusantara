@@ -15,7 +15,7 @@
         integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous">
-    </script> 
+    </script>
     @yield('css')
     <link rel="stylesheet" href="{{ asset('admin/assets/css/main.css') }}" type="text/css">
 </head>
@@ -24,8 +24,8 @@
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
-            <div class="m-t-30"><img src="{{ asset('assets\logo\logo.svg') }}" width="48"
-                    height="48" alt="ArrOw"></div>
+            <div class="m-t-30"><img src="{{ asset('assets\logo\logo.svg') }}" width="48" height="48"
+                    alt="ArrOw"></div>
             <p>Please wait...</p>
         </div>
     </div>
@@ -35,7 +35,7 @@
             {{-- <a href="javascript:void(0);" class="menu_toggle"><i class="fa fa-align-left"></i></a> --}}
             {{-- <a href="index.html" class="navbar-brand"><img src="{{ asset('admin/assets/images/brand/icon.svg') }}"
                     alt="BigBucket" /> --}}
-                {{-- <strong>Big</strong> Bucket</a> --}}
+            {{-- <strong>Big</strong> Bucket</a> --}}
             <div id="navbar_main">
                 {{-- <ul class="navbar-nav mr-auto hidden-xs">
                     <li class="nav-item page-header">
@@ -98,7 +98,7 @@
                                 class="fa fa-list"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <h6 class="dropdown-header">User menu</h6>
-                            <a class="dropdown-item" href="{{route('profile')}}"><i
+                            <a class="dropdown-item" href="{{ route('profile') }}"><i
                                     class="fa fa-user text-primary"></i>Profile</a>
                             {{-- <a class="dropdown-item" href="javascript:void(0);"><span
                                     class="float-right badge badge-success">$50K</span><i
@@ -109,8 +109,8 @@
                             <a class="dropdown-item" href="javascript:void(0);"><i
                                     class="fa fa-cog text-primary"></i>Settings</a> --}}
                             <div class="dropdown-divider" role="presentation"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}" 
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <i class="fa fa-sign-out text-primary"></i>Sign out
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -128,7 +128,7 @@
         <div class="left_sidebar">
             <nav class="sidebar">
                 <div class="user-info">
-                    <div class="image"><a href="javascript:void(0);"><img
+                    <div class="image" id="logo-img"><a href="javascript:void(0);"><img
                                 src="{{ asset('admin/assets/images/user.png') }}" alt="User"></a></div>
                 </div>
                 <ul id="main-menu" class="metismenu">
@@ -140,16 +140,17 @@
                         <ul id="paket-list">
                         </ul>
                     </li>
-                    <li><a href="{{route('cms.ruang.media')}}"><i class="ti-home"></i><span>Ruang Media</span></a></li>
+                    <li><a href="{{ route('cms.ruang.media') }}"><i class="ti-home"></i><span>Ruang Media</span></a>
+                    </li>
                     <li>
-                        <a href="javascript:void(0)" class="has-arrow"><i
-                                class="ti-pie-chart"></i><span>Landing Page</span></a>
+                        <a href="javascript:void(0)" class="has-arrow"><i class="ti-pie-chart"></i><span>Landing
+                                Page</span></a>
                         <ul>
-                            <li><a href="{{route('cms.banner')}}">Banner</a></li> 
-                            <li><a href="{{route('cms.setting')}}">Setting</a></li> 
+                            <li><a href="{{ route('cms.banner') }}">Banner</a></li>
+                            <li><a href="{{ route('cms.setting') }}">Setting</a></li>
                         </ul>
                     </li>
-                  
+
                 </ul>
             </nav>
         </div>
@@ -159,8 +160,8 @@
                 <a href="javascript:void(0);" class="rightbar_btn"><i class="fa fa-cog fa-spin"></i></a>
             </div>
             <ul class="nav nav-pills nav-fill flex-column flex-sm-row mx-3 my-3" id="myTab" role="tablist">
-                <li class="nav-item"><a class="nav-link active" id="Settings-tab" data-toggle="tab"
-                        href="#Settings" role="tab" aria-controls="Settings" aria-selected="true">Settings</a>
+                <li class="nav-item"><a class="nav-link active" id="Settings-tab" data-toggle="tab" href="#Settings"
+                        role="tab" aria-controls="Settings" aria-selected="true">Settings</a>
                 </li>
                 <li class="nav-item"><a class="nav-link" id="Contact-tab" data-toggle="tab" href="#Contact"
                         role="tab" aria-controls="Contact" aria-selected="false">Contact</a></li>
@@ -330,7 +331,7 @@
                                 </div>
                             </li>
                             <li class="d-flex align-items-center">
-                                <span class="contact-img">
+                                <span class="contact-img" id="logo-img">
                                     <img src="{{ asset('admin/assets/images/xs/avatar2.jpg') }}" class="rounded"
                                         alt="">
                                 </span>
@@ -475,6 +476,31 @@
             }
             return url;
         }
+
+        function setlogo(page = 1, wilayah_id = null) {
+            $.ajax({
+                url: '{{ route('api.setting.index') }}',
+                method: 'GET',
+            }).done(function(response) {
+
+                const logo = document.getElementById('logo-img');
+              
+
+                console.log('Logo response:', response?.data?.logo);
+                if (response?.data?.logo) {
+                    const html = `<img src="/${response.data.logo}" alt="Logo" style="width: 30%; height: 30%;">`;
+                    logo.innerHTML =   html;
+
+                }
+
+
+
+            }).fail(function(xhr, status, error) {
+                console.error('Error:', error);
+            });
+        }
+
+        setlogo();
     </script>
 </body>
 
