@@ -133,24 +133,22 @@
                 </div>
                 <ul id="main-menu" class="metismenu">
                     <li class="g_heading">Main</li>
-                    <li><a href="index.html"><i class="ti-home"></i><span>Dashboard</span></a></li>
+                    <li><a href="index.html"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
                     <li>
-                        <a href="javascript:void(0)" class="has-arrow"><i
-                                class="ti-pie-chart"></i><span>Paket</span></a>
+                        <a href="javascript:void(0)" class="has-arrow"><i class="ti-package"></i><span>Paket</span></a>
                         <ul id="paket-list">
                         </ul>
                     </li>
-                    <li><a href="{{ route('cms.ruang.media') }}"><i class="ti-home"></i><span>Ruang Media</span></a>
+                    <li><a href="{{ route('cms.ruang.media') }}"><i class="ti-gallery"></i><span>Ruang Media</span></a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" class="has-arrow"><i class="ti-pie-chart"></i><span>Landing
+                        <a href="javascript:void(0)" class="has-arrow"><i class="ti-layout"></i><span>Landing
                                 Page</span></a>
                         <ul>
-                            <li><a href="{{ route('cms.banner') }}">Banner</a></li>
-                            <li><a href="{{ route('cms.setting') }}">Setting</a></li>
+                            <li><a href="{{ route('cms.banner') }}"><i class="ti-image"></i>Banner</a></li>
+                            <li><a href="{{ route('cms.setting') }}"><i class="ti-settings"></i>Setting</a></li>
                         </ul>
                     </li>
-
                 </ul>
             </nav>
         </div>
