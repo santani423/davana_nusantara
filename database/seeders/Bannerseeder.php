@@ -18,7 +18,7 @@ class Bannerseeder extends Seeder
             'title' => 'Welcome to Daffana Nusantara '.$i,
             'image_path' => 'assets/slide/slide.png',
             'code' => 'banner_'.$i,
-            'discover_more' => 'https://example.com/discover',
+            'discover_more' => 'https://daffananusantara.com/paket',
             'description' => 'Explore the beauty of Nusantara with us.',
             'is_active' => 1,
             'created_at' => now(),
@@ -29,19 +29,19 @@ class Bannerseeder extends Seeder
         DB::table('sub_banner_images')->insert([
             [
                 'banner_id' => $bannerId,
-                'path_img' => 'assets/slide/slide.png',
+                'path_img' => 'assets/item/Rectangle11.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'banner_id' => $bannerId,
-                'path_img' => 'assets/slide/slide.png',
+                'path_img' => 'assets/item/Rectangle12.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'banner_id' => $bannerId,
-                'path_img' => 'assets/slide/slide.png',
+                'path_img' => 'assets/item/Rectangle13.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

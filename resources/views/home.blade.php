@@ -86,7 +86,7 @@
                                 <img src="{{ asset($package->img_2) }}" alt="" class="rounded"
                                     style="border-radius: 15px; width: 100%;">
                                 <div class="position-absolute bottom-0 start-0 text-white p-2">
-                                    <h5 class="text-white">{{ $package->title_img_2 }}r</h5>
+                                    <h5 class="text-white">{{ $package->title_img_2 }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                                 <img src="{{ asset($package->img_3) }}" alt="" class="rounded"
                                     style="border-radius: 15px; width: 100%;">
                                 <div class="position-absolute bottom-0 start-0 text-white p-2">
-                                    <h5 class="text-white">{{ $package->title_img_3 }}r</h5>
+                                    <h5 class="text-white">{{ $package->title_img_3 }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                                 <img src="{{ asset($package->img_4) }}" alt="" class="rounded"
                                     style="border-radius: 15px; width: 100%;">
                                 <div class="position-absolute bottom-0 start-0 text-white p-2">
-                                    <h5 class="text-white">{{ $package->title_img_4 }}r</h5>
+                                    <h5 class="text-white">{{ $package->title_img_4 }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -113,14 +113,14 @@
                                 <img src="{{ asset($package->img_5) }}" alt="" class="rounded"
                                     style="border-radius: 15px; width: 100%;">
                                 <div class="position-absolute bottom-0 start-0 text-white p-2">
-                                    <h5 class="text-white">{{ $package->title_img_5 }}r</h5>
+                                    <h5 class="text-white">{{ $package->title_img_5 }}</h5>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="mt-4 text-center">
-                    <a href="#" class="btn btn-success btn-lg rounded-pill">Explore Now</a>
+                    <a href="{{route('paket.index')}}" class="btn btn-success btn-lg rounded-pill">Explore Now</a>
                 </div>
             </div>
 
@@ -192,17 +192,16 @@
                                                 </svg>
                                                 {{ $item->wilayah->name }}</span>
                                             <h3 class="title-tour-list">
-                                                <a href="{{ route('paket.show', $item->code) }}"
-                                                    style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">
+                                                <p  
+                                                    style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; color: #000; font-weight: bold;">
                                                     {{ $item->name }}
-                                                </a>
+                                                </p>
                                             </h3>
 
-                                            <div class="icon-box flex-three">
-
-                                            </div>
+                                            
                                             <div class="row">
                                                 <div class="col-8">
+                                                    <p style="color: gray;">Start From</p>
                                                     <h5 style="color: orange;">
                                                         {{ 'Rp ' . number_format($item->price, 0, ',', '.') }}</h5>
                                                     <h6 style="color: orange;">/Orang</h6>
@@ -275,23 +274,25 @@
                     <div class="swiper populer-activities overflow-hidden">
                         <div class="swiper-wrapper">
                             @foreach ($ruangMedia as $item)
+                                <a href="{{ route('ruang-media.show', $item->code) }}">
                                 <div class="swiper-slide">
                                     <div class="tour-listing box-sd">
-                                        <a href="{{ route('ruang-media.show', $item->code) }}"
+                                        <p
                                             class="tour-listing-image">
 
                                             <img src="{{ asset($item->thumbnail_img) }}" alt="Image Listing">
 
-                                        </a>
+                                        </p>
                                         <div class="tour-listing-content">
 
-                                            <h3 class="title-tour-list"><a
+                                            <h3 class="title-tour-list "><a class="text-black" style="text-decoration: none;" 
                                                     href="{{ route('ruang-media.show', $item->code) }}">{{ $item->title }}</a>
                                             </h3>
                                             <p>{{ $item->created_at->format('M d, Y') }}</p>
                                         </div>
                                     </div>
                                 </div>
+                            </a>
                             @endforeach
                         </div>
                     </div>

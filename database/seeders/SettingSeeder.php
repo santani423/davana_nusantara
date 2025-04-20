@@ -15,12 +15,12 @@ class SettingSeeder extends Seeder
         DB::table('settings')->insert([
             'logo' => 'assets/logo/logo1.png',
             'favicon' => 'assets/logo/logo1.png',
-            'title' => 'Davana Nusantara',
+            'title' => 'Daffana Nusantara',
             'description' => 'Platform perjalanan terbaik di Indonesia.',
             'keywords' => 'travel, nusantara, perjalanan, wisata',
-            'address' => 'Jl. Merdeka No. 123, Jakarta',
+            'address' => 'Jl. KH. Hassyim Ashari Kosambi | No. 41, Poris Plawad, Kec. Cipondoh, Kota Tangerang',
             'phone' => '6285218898727',
-            'email' => 'info@davananusantara.com',
+            'email' => 'daffanacv@gmail.com',
             'social_media' => json_encode([
                 'facebook' => 'https://facebook.com/davananusantara',
                 'instagram' => 'https://instagram.com/davananusantara',

@@ -134,7 +134,7 @@
                                         <i class="icon-noun-mail-5780740-1"></i>
                                         <p>Info@webmail.com</p>
                                     </li>
-                                    <li class="flex-three">
+                                     <li class="flex-three">
                                         <i class="icon-Group-9"></i>
                                         <p>684 555-0102 490</p>
                                     </li>
@@ -149,23 +149,23 @@
                                 <h5 class="title">Navigation</h5>
                                 <ul class="footer-menu text-white">
                                     <li>
-                                        <a href="#" class="text-white">Home</a>
+                                        <a href="/"  style="text-decoration: none;" class="text-white">Home</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="text-white">Paket Tour Umum</a>
+                                        <a href="#"  style="text-decoration: none;" class="text-white">Paket</a>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a href="#" class="text-white">Paket Educational Trip</a>
+                                    </li> --}}
+                                    <li>
+                                        <a href="#"  style="text-decoration: none;" class="text-white">Ruang Media</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="text-white">Ruang Media</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-white">Tentang Kami</a>
+                                        <a href="#"  style="text-decoration: none;" class="text-white">Tentang Kami</a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 
                                     <h5 class="title">Get in touch</h5>
                                     <h3 class="text-white" id="phone">021 345 678 910</h3>
@@ -183,7 +183,7 @@
 
                     <div class="row footer-bottom">
                         <div class="col-md-12 text-center">
-                            <p class="copy-right">Copyright © 2025 Daffana Nusantara - All Right Reserved. Design by LaWavedesign.com - Disclaimer</p>
+                            <p class="copy-right">Copyright © 2025 Daffana Nusantara - Powered by Toffel Tech Asia</p>
                         </div>
                     </div>
                 </div>
