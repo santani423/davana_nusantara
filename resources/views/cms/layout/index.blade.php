@@ -477,7 +477,7 @@
 
         function setlogo(page = 1, wilayah_id = null) {
             $.ajax({
-                url: '{{ route('setting.index') }}',
+                url: '{{ route('api.setting.index') }}',
                 method: 'GET',
             }).done(function(response) {
 
