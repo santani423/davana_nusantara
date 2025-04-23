@@ -8,10 +8,11 @@
 
     <meta name="author" content="themesflat.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/logo1.png') }}">
+    {{-- <link rel="icon" type="image/x-icon" id="favico" href="{{ asset('assets/logo/logo1.png') }}"> --}}
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" id="favico" href="{{ asset('assets/logo/logo1.png') }}" type="image/x-icon">
-    <link rel="apple-touch-icon-precomposed" id="favico2" href="{{ asset('assets/logo/logo1.png') }}">
+    {{-- <link rel="shortcut icon" id="favico" href="{{ asset('assets\logo\logo.svg') }}" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" id="favico2" href="{{ asset('assets\logo\logo.svg') }}"> --}}
     <link rel="stylesheet" href="{{ asset('vitour/app/css/app.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vitour/app/css/magnific-popup.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('vitour/app/css/jquery.fancybox.min.css') }}">
@@ -183,7 +184,7 @@
 
                     <div class="row footer-bottom">
                         <div class="col-md-12 text-center">
-                            <p class="copy-right">Copyright © 2025 Daffana Nusantara - Powered by Toffel Tech Asia</p>
+                            <p class="copy-right">Copyright © 2025 Daffana Nusantara - Powered by  <a href="https://toffeltechasia.com" class="text-main">Toffel Tech Asia</a></p>
                         </div>
                     </div>
                 </div>
@@ -224,12 +225,12 @@
             // Initialize the nice select plugin
             function show(p) {
             $.ajax({
-                url: '{{ route('setting.index') }}',
+                url: '{{ route('api.setting.index') }}',
                 method: 'GET',
                  
             }).done(function(response) {
                 
-                console.log(response);
+                // console.log(response);
                 let settings = response.data;
                 let addres = document.getElementById('addres');
                 addres.innerHTML = settings.address || '-';
