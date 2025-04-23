@@ -184,7 +184,7 @@
 
                     <div class="row footer-bottom">
                         <div class="col-md-12 text-center">
-                            <p class="copy-right">Copyright © 2025 Daffana Nusantara - Powered by  <a href="https://toffeltechasia.com" class="text-main">Toffel Tech Asia</a></p>
+                            <p class="copy-right">Copyright © 2025 Daffana Nusantara - Powered b  <a href="https://toffeltechasia.com" class="text-main">Toffel Tech Asia</a></p>
                         </div>
                     </div>
                 </div>
