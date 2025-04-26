@@ -20,15 +20,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('start_date_departure');
             $table->string('end_date_departure');
-            // $table->boolean('hotel_bintang_1')->default(1);
-            // $table->boolean('hotel_bintang_2')->default(1);
-            // $table->boolean('hotel_bintang_3')->default(1);
-            // $table->boolean('hotel_bintang_4')->default(1);
-            // $table->boolean('hotel_bintang_5')->default(0);
             $table->boolean('transportation_ticket')->default(1);
             $table->string('code');
             $table->text('description');  
             $table->bigInteger('price')->unsigned();  
+            $table->integer('minimal_orang')->default(1); // Tambahkan kolom ini
             $table->timestamps();
         });
     }

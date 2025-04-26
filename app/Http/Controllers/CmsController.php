@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ItemDesc;
 use App\Models\Paket;
 use App\Models\RuangMedia;
+use App\Models\TypePaket;
 use App\Models\User;
 use App\Models\Wilayah;
 use Illuminate\Http\Request;
@@ -66,7 +67,8 @@ class CmsController extends Controller
     {
         $wilayah = Wilayah::all();
         $ItemDesc = ItemDesc::all();
-        return view('cms.paket.create', compact('code', 'wilayah', 'ItemDesc'));
+        $typePaket = TypePaket::all();
+        return view('cms.paket.create', compact('code', 'wilayah', 'ItemDesc', 'typePaket'));
     }
 
     function paketStore(Request $request, $code)

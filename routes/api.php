@@ -23,7 +23,7 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
-// });
+// });\
 
 Route::get('/paket', [PaketController::class, 'index'])->name('api.paket.index');
 Route::get('/paket/wilayah', [PaketController::class, 'wilayah'])->name('api.paket.wilayah.index');

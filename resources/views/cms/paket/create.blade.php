@@ -27,7 +27,10 @@
                     <h2>Tambah</h2>
                 </div>
                 <div class="body">
-                    <form id="wizard_with_validation" method="POST" enctype="multipart/form-data">
+                    <form action="{{ url('api/paket') }}" method="post">
+                        @csrf   <button>sdsdf</button>
+                    </form>
+                    <form id="wizard_with_validation" accept="{{ url('api/paket') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="code" id="code" value="{{ $code }}">
 
@@ -35,11 +38,25 @@
                         <h3>Paket</h3>
                         <fieldset style="max-height: 100%; overflow-y: auto;">
                             <div class="form-group">
+                                <label for="paket_id">Jenis Paket *</label>
+                                <select name="paket_id" id="paket_id" class="form-control" required>
+                                    <option value="">-- Pilih Paket --</option>
+                                    @foreach ($typePaket as $w)
+                                        <option value="{{ $w->id }}"  >
+                                            {{ $w->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="wilayah_id">Wilayah *</label>
                                 <select name="wilayah_id" id="wilayah_id" class="form-control" required>
                                     <option value="">-- Pilih Wilayah --</option>
                                     @foreach ($wilayah as $w)
-                                        <option value="{{ $w->id }}">{{ $w->name }}</option>
+                                        <option value="{{ $w->id }}" {{ $w->code == $code ? 'selected' : '' }}>
+                                            {{ $w->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -97,7 +114,7 @@
                                 <input type="date" class="form-control" name="end_date_departure" id="end_date_departure" required>
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Hotel</label>
                                 <div class="d-flex gap-3">
                                     @for ($i = 1; $i <= 5; $i++)
@@ -108,7 +125,7 @@
                                         </div>
                                     @endfor
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
                                 <label>Transportation</label>
@@ -123,6 +140,16 @@
                                 <textarea class="form-control" name="description" id="description" rows="4"></textarea>
                             </div>
 
+                            <div class="form-group">
+                                <label for="price">Orang per Pax *</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Pax</span>
+                                    </div>
+                                    <input type="number" class="form-control" name="minimal_orang" id="minimal_orang"
+                                        placeholder="Contoh: 30" required  >
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="price">Harga *</label>
                                 <div class="input-group">
@@ -232,43 +259,13 @@
         });
 
         function simpanData() {
-            let form = $('#wizard_with_validation')[0];
-            let formData = new FormData(form);
-            let rawPrice = document.getElementById('price').value.replace(/\./g, '').replace(/,/g, '.');
-            formData.set('price', rawPrice);
+    let form = $('#wizard_with_validation')[0];
 
-            $('#loadingModal').modal('show'); // tampilkan modal spinner
+    $('#loadingModal').modal('show'); // tampilkan modal spinner
 
-            $.ajax({
-                url: "{{ url('/api/paket') }}",
-                method: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(res) {
-                    $('#loadingModal').modal('hide');
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil',
-                        text: 'Data berhasil disimpan!'
-                    }).then(() => {
-                        window.location.href = "{{ url('/cms/paket',$code) }}";
-                        $('#loadingModal').modal('hide');
-                    });
-                },
-                error: function(err) {
-                    $('#loadingModal').modal('hide');
-                    console.error(err);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Gagal!',
-                        text: 'Terjadi kesalahan saat menyimpan data.'
-                    });
-                }
-            });
-        }
+    setTimeout(function() {
+        form.submit();
+    }, 500); // delay 0.5 detik sebelum submit
+}
     </script>
 @endsection
