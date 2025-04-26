@@ -33,7 +33,7 @@ class PaketController extends Controller
 
             if ($request->has('wilayah_id') && $request->input('wilayah_id') != null) {
                 $query->join('wilayahs', 'pakets.wilayah_id', '=', 'wilayahs.id')
-                    ->where('wilayahs.id', $request->input('wilayah_id'));
+                    ->where('wilayahs.code', $request->input('wilayah_id'));
             }
             
             $typePaket = TypePaket::where('code', $request->type_paket)->first();
@@ -49,7 +49,7 @@ class PaketController extends Controller
             
 
             $paket = $query->paginate($size, ['*'], 'page', $page);
-
+            // dd($paket);
             return response()->json([
                 'success' => true,
                 'message' => 'List Paket retrieved successfully',

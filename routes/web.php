@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [CmsController::class, 'profile'])->name('profile');
     Route::put('/profile', [CmsController::class, 'profileUpdate'])->name('profile.update');
     Route::get('/cms/paket/{code}', [CmsController::class, 'paket'])->name('cms.paket');
+    Route::get('/cms/paket/wilayah/{code}', [CmsController::class, 'paketWilayah'])->name('cms.paket');
     Route::get('/cms/paket/create/{code}', [CmsController::class, 'paketCreate'])->name('cms.paket.create');
     Route::post('/cms/paket/store/{code}', [CmsController::class, 'paketStore'])->name('cms.paket.store');
     Route::get('/cms/paket/show/{code}', [CmsController::class, 'paketShow'])->name('cms.paket.show');

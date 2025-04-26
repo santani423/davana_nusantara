@@ -56,6 +56,11 @@ class CmsController extends Controller
     {
         return view('cms.paket.index', compact('code'));
     }
+    function paketWilayah($code)
+    {
+        $wilayah = Wilayah::where('code', $code)->first();
+        return view('cms.paket.index', compact('code','wilayah'));
+    }
 
     function paketCreate($code)
     {

@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\PaketController;
 use App\Http\Controllers\Api\RuangMediaController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\TypePaketController;
+use App\Http\Controllers\Api\WilayahController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Mockery\Generator\StringManipulation\Pass\Pass;
@@ -25,11 +26,14 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 // });
 
 Route::get('/paket', [PaketController::class, 'index'])->name('api.paket.index');
+Route::get('/paket/wilayah', [PaketController::class, 'wilayah'])->name('api.paket.wilayah.index');
 Route::post('/paket', [PaketController::class, 'store'])->name('paket.store');
 Route::get('/paket/{paket}', [PaketController::class, 'show'])->name('paket.show');
 Route::post('/paket/update/{paket}', [PaketController::class, 'update'])->name('paket.update');
 Route::delete('/paket/{paket}', [PaketController::class, 'destroy'])->name('paket.destroy');
 Route::get('/type-paket', [TypePaketController::class, 'index'])->name('type-paket'); 
+Route::get('/wilayah', [WilayahController::class, 'index'])->name('api.wilayah'); 
+Route::get('/wilayah/paket', [WilayahController::class, 'paket'])->name('api.wilayah.paket'); 
 
 Route::get('/ruang-media', [RuangMediaController::class, 'index'])->name('ruangMedia.index');
 Route::post('/ruang-media', [RuangMediaController::class, 'store'])->name('ruang-media.store');

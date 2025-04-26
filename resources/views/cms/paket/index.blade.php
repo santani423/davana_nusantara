@@ -5,18 +5,18 @@
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12">
             <div class="card planned_task">
-                <div class="header">
-                    <h2>{{ $code }}</h2>
-                    <a href="{{ route('cms.paket.create', $code) }}" class="btn btn-primary float-right">Add Paket</a>
+                <div class="header d-flex justify-content-end">
+                    <a href="{{ route('cms.paket.create', $code) }}" class="btn btn-primary">Add Paket</a>
                 </div>
                 <div class="body"> 
+                    <h1>{{ $wilayah->name }}</h1>
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Thumbnail</th>
                                 <th>Nama</th>
-                                <th>Wilayah</th>
+                                <th>Paket</th>
                                 <th>Departure</th>
                                 <th>Transportation</th>
                                 <th>Price</th>
@@ -71,8 +71,7 @@
                 method: 'GET',
                 data: {
                     page: page,
-                    wilayah_id: wilayah_id,
-                    type_paket: '{{ $code }}',
+                    wilayah_id: '{{ $code }}', 
                 },
             }).done(function(response) {
                 const data = response?.data?.data || [];
@@ -90,7 +89,7 @@
                                 <td>${(currentPage - 1) * data.length + index + 1}</td>
                                 <td><img src="/${item.thumbnail_img || '{{ asset('assets/item/Maskgroup.png') }}'}" alt="thumbnail_img" width="100"></td>
                                 <td>${item.name || '-'}</td>
-                                <td>${item?.wilayah?.name || 'Unknown'}</td>
+                                <td>${item?.type_paket?.name || 'Unknown'}</td>
                                 <td>${item.start_date_departure ? new Date(item.start_date_departure).toLocaleString('default', { month: 'long', year: 'numeric' }) : '-'} - ${item.end_date_departure ? new Date(item.end_date_departure).toLocaleString('default', { month: 'long', year: 'numeric' }) : '-'}</td>
                                 <td>${item.transportation_ticket ? '<span class="text-success">Include</span>' : '<span class="text-danger">Exclude</span>'}</td>
                                 <td>${item.price || '-'}</td> 

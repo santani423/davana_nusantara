@@ -445,7 +445,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            fetch('/api/type-paket')
+            fetch('/api/wilayah')
                 .then(response => response.json())
                 .then(data => {
                     const container = $('#paket-list');
@@ -455,7 +455,7 @@
                         data.data.data.forEach(item => {
                             console.log('Processing item:', item);
                             html +=
-                                `<li><a href="${route('cms/paket', { code: item.code })}">${item.name}</a></li>`;
+                                `<li><a href="${route('cms/paket/wilayah', { code: item.code })}">${item.name}</a></li>`;
                         });
                         container.append(html);
                     } else {

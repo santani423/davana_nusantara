@@ -14,10 +14,11 @@ class WilayahSeed extends Seeder
     {
         DB::table('wilayahs')->insert([
             ['name' => 'Jakarta', 'code' => 'JKT'],
-            ['name' => 'Bandung', 'code' => 'BDG'],
-            ['name' => 'Surabaya', 'code' => 'SBY'],
-            ['name' => 'Yogyakarta', 'code' => 'YGY'],
-            ['name' => 'Medan', 'code' => 'MDN'],
+            ['name' => 'Banten', 'code' => 'BTN'],
+            ['name' => 'Jawa Barat', 'code' => 'JBR'],
+            ['name' => 'Jawa Tengah', 'code' => 'JTG'],
+            ['name' => 'Jawa Timur', 'code' => 'JT'],
+            ['name' => 'Bali', 'code' => 'BLM'],
         ]);
     }
 }
