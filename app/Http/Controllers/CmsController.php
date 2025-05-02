@@ -171,35 +171,107 @@ class CmsController extends Controller
         }
     }
 
-    function paketEdit($code)
+    function paketUpdate(Request $request, $code)
     {
-        $wilayah = Wilayah::all();
-        $ItemDesc = ItemDesc::all();
+        // Logic to store data
+        // return redirect()->route('cms.paket', ['code' => $code]);
+        // dd($request->all());
+
+        try {
+            $paket = Paket::where('code', $code)->first();
+            // return response()->json([
+            //     'success' => true,     
+            //     'message' => 'Paket successfully created',
+            // ], 201);
+            $thumbnailPath = $paket->thumbnail_img;
+            if ($request->hasFile('thumbnail_img')) {
+                $file = $request->file('thumbnail_img');
+                $thumbnailPath = 'storage/' .$file->store('uploads/thumbnails', 'public');
+            }
+            $pdf =  $paket->pdf;
+            if ($request->hasFile('pdf')) {
+                $file = $request->file('pdf');
+                $pdf = 'storage/' .$file->store('uploads/pdf', 'public');
+            }
+
+            $typePaket = TypePaket::where('id', $request->paket_id)->first();
+
+            if (!$typePaket) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Invalid Type Paket code',
+                    'code' => $request->code,
+                ], 400);
+            }
+
+           
+            $paket->wilayah_id = $request->wilayah_id;
+            $paket->type_paket_id = $request->paket_id;
+            $paket->minimal_orang = $request->minimal_orang;
+            $paket->name = $request->name;
+            $paket->thumbnail_img = $thumbnailPath;
+            $paket->pdf =  $pdf;
+            $paket->start_date_departure = $request->start_date_departure;
+            $paket->end_date_departure = $request->end_date_departure;
+            // $paket->hotel_bintang_1 = $request->hotel_bintang_1 ? 1 : 0;
+            // $paket->hotel_bintang_2 = $request->hotel_bintang_2 ? 1 : 0;
+            // $paket->hotel_bintang_3 = $request->hotel_bintang_3 ? 1 : 0;
+            // $paket->hotel_bintang_4 = $request->hotel_bintang_4 ? 1 : 0;
+            // $paket->hotel_bintang_5 = $request->hotel_bintang_5 ? 1 : 0;
+            $paket->transportation_ticket = $request->transportation_ticket ? 1 : 0;
+            $paket->code = $request->code . '_' . $request->wilayah_id . '_' . date('YmdHis') . '_' . rand(1000, 9999);
+            $paket->description = $request->description ?? null;
+            $paket->price = (int) $request->price;
+
+            $paket->save();
+
+            // return response()->json([ 
+            //     'message' => 'Paket successfully created',
+            //     'data' => $request->item_desc_id,
+            // ], 201);
+            foreach ($request->item_desc_id as $key => $itemDescId) {
+                $item =  ItemDescPaket::where('id', $request->item_desc_id[$key])->first(); 
+                $item->desc = $request->deskripsi[$key];
+                $item->save();
+            }
+            $wilayah = Wilayah::where('id', $paket->wilayah_id)->first();
+            return redirect()->route('cms.paket', $wilayah->code )->with('success', 'Paket successfully created');
+            // return response()->json([
+            //     'success' => true,
+            //     'data' => $paket, 
+            //     'wilayag' =>$typePaket->code,       
+            //     'message' => 'Paket successfully created',
+            // ], 201);
+
+        } catch (\Illuminate\Validation\ValidationException $ve) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation error',
+                'errors' => $ve->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to store paket',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    function paketEdit($code)
+    { 
+       
         $paket = Paket::where('code', $code)->first();
-        // dd($paket->itemDescPaket);
-        $hotel = [
-            [
-                'id' => 1,
-                'hotel' => $paket->hotel_bintang_1,
-            ],
-            [
-                'id' => 2,
-                'hotel' => $paket->hotel_bintang_2,
-            ],
-            [
-                'id' => 3,
-                'hotel' => $paket->hotel_bintang_3,
-            ],
-            [
-                'id' => 4,
-                'hotel' => $paket->hotel_bintang_4,
-            ],
-            [
-                'id' => 5,
-                'hotel' => $paket->hotel_bintang_5,
-            ],
-        ];
-        return view('cms.paket.edit', compact('code', 'wilayah', 'ItemDesc', 'paket', 'hotel'));
+        
+        $typePaket = TypePaket::where('id', $paket->type_paket_id)->first();
+        $wilayah = Wilayah::where('id', $paket->wilayah_id)->first();
+        $ItemDesc = ItemDesc::query()
+        ->join('item_desc_pakets as idp', 'idp.item_desc_id', '=', 'item_descs.id') 
+        ->where('idp.paket_id', $typePaket->id)
+        ->select('item_descs.name as item_desc_name','idp.*')
+        ->get();
+        
+        return view('cms.paket.edit', compact('code', 'wilayah', 'ItemDesc', 'paket', 'typePaket'));
     }
     function paketShow($code)
     {

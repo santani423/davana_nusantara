@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/cms/paket/store', [CmsController::class, 'paketStore'])->name('cms.paket.store');
     Route::get('/cms/paket/show/{code}', [CmsController::class, 'paketShow'])->name('cms.paket.show');
     Route::get('/cms/paket/edit/{code}', [CmsController::class, 'paketEdit'])->name('cms.paket.edit');
+    Route::post('/cms/paket/update/{code}', [CmsController::class, 'paketUpdate'])->name('cms.paket.edit');
     Route::get('/cms/ruang_media', [CmsController::class, 'ruangMeida'])->name('cms.ruang.media');
     Route::get('/cms/ruang_media/show/{code}', [CmsController::class, 'ruangMediaShow'])->name('cms.ruang.media.show');
     Route::get('/cms/ruang_media/create', [CmsController::class, 'ruangMediaCreate'])->name('cms.ruang.media.create');
