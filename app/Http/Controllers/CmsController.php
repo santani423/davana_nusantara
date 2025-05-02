@@ -60,14 +60,24 @@ class CmsController extends Controller
     function paketWilayah($code)
     {
         $wilayah = Wilayah::where('code', $code)->first();
-        return view('cms.paket.index', compact('code','wilayah'));
+        return view('cms.paket.index', compact('code', 'wilayah'));
     }
 
-    function paketCreate($code)
+    function paketCreate(Request $request, $code)
     {
-        $wilayah = Wilayah::all();
-        $ItemDesc = ItemDesc::all();
-        $typePaket = TypePaket::all();
+        $wilayah = Wilayah::where('code', $code)->first();
+        // dd($wilayah);
+        $ItemDesc = ItemDesc::query()
+            ->join('item_desc_pakets as idp', 'idp.item_desc_id', '=', 'item_descs.id')
+            ->join('type_pakets', 'type_pakets.id', '=', 'idp.paket_id')
+            ->where('type_pakets.code', $request->jenis)
+            ->select('item_descs.*')
+            ->get();
+            // dd($ItemDesc);
+
+        $typePaket = TypePaket::where('code', $request->jenis)->first();
+
+
         return view('cms.paket.create', compact('code', 'wilayah', 'ItemDesc', 'typePaket'));
     }
 
@@ -105,7 +115,7 @@ class CmsController extends Controller
                 'hotel' => $paket->hotel_bintang_5,
             ],
         ];
-        return view('cms.paket.edit', compact('code', 'wilayah', 'ItemDesc', 'paket','hotel'));
+        return view('cms.paket.edit', compact('code', 'wilayah', 'ItemDesc', 'paket', 'hotel'));
     }
     function paketShow($code)
     {
@@ -134,7 +144,7 @@ class CmsController extends Controller
     function ruangMediaEdit($code)
     {
         $media = RuangMedia::where('code', $code)->first();
-        return view('cms.ruangMedia.edit', compact('media','code'));
+        return view('cms.ruangMedia.edit', compact('media', 'code'));
     }
     function ruangMediaShow($code)
     {

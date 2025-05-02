@@ -91,6 +91,7 @@
             align-items: center;
             height: 100vh;
         }
+
         .modal-spinner .spinner-border {
             width: 4rem;
             height: 4rem;
@@ -105,26 +106,14 @@
         <div class="tab">Informasi Utama:
             <div class="form-group">
                 <label for="paket_id">Jenis Paket *</label>
-                <select name="paket_id" id="paket_id" class="form-control" required>
-                    <option value="">-- Pilih Paket --</option>
-                    @foreach ($typePaket as $w)
-                        <option value="{{ $w->id }}">
-                            {{ $w->name }}
-                        </option>
-                    @endforeach
-                </select>
+                <input type="text" class="form-control" name="typePaket_id" id="typePaket_id" value="{{$typePaket->name}}"
+                placeholder="typePaket" required disabled>
             </div>
 
             <div class="form-group">
                 <label for="wilayah_id">Wilayah *</label>
-                <select name="wilayah_id" id="wilayah_id" class="form-control" required>
-                    <option value="">-- Pilih Wilayah --</option>
-                    @foreach ($wilayah as $w)
-                        <option value="{{ $w->id }}" {{ $w->code == $code ? 'selected' : '' }}>
-                            {{ $w->name }}
-                        </option>
-                    @endforeach
-                </select>
+                <input type="text"  class="form-control" name="wilayah_id" id="wilayah_id" value="{{$wilayah->name}}"
+                    placeholder="Wilayah" required disabled>
             </div>
 
             <div class="form-group">
@@ -418,5 +407,5 @@
             $('#loadingModal').modal('show'); // tampilkan modal spinner
             document.getElementById("regForm").submit();
         }
-    </script> 
+    </script>
 @endsection

@@ -18,6 +18,8 @@ class LdksSeeder extends Seeder
     {
         $itemTempat = ItemDesc::where('code', 'tmp')->first();
         $itemFasilitas = ItemDesc::where('code', 'fts')->first();
+        $itemDestinasi = ItemDesc::where('code', 'des')->first();
+        $itemKegiatan = ItemDesc::where('code', 'kgt')->first();
 
         $typePaket = new TypePaket();
         $typePaket->name = 'LDKS';

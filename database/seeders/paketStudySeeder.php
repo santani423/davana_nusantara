@@ -16,7 +16,7 @@ class paketStudySeeder extends Seeder
      */
     public function run(): void
     {
-        $itemTempat = ItemDesc::where('code', 'tmp')->first();
+        $itemTempat = ItemDesc::where('code', 'des')->first();
         $itemFasilitas = ItemDesc::where('code', 'fts')->first();
 
         $typePaket = new TypePaket();

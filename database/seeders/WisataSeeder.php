@@ -17,7 +17,7 @@ class WisataSeeder extends Seeder
     public function run(): void
     {
         $itemDestinasi = ItemDesc::where('code', 'des')->first();
-        $itemDestinasi = ItemDesc::where('code', 'kgt')->first();
+        // $itemDestinasi = ItemDesc::where('code', 'kgt')->first();
         $itemFasilitas = ItemDesc::where('code', 'fts')->first();
 
         $typePaket = new TypePaket();
