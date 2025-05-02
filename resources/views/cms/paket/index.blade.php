@@ -7,11 +7,20 @@
                 <div class="card planned_task">
                     <div class="header d-flex justify-content-end">
                         <!-- Tombol memunculkan modal -->
+
                         <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal"
                             data-target="#choosePaketModal">Add Paket</a>
                     </div>
                     <div class="body">
                         <h1>{{ $wilayah->name }}</h1>
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
                         <table class="table table-striped">
                             <thead>
                                 <tr>

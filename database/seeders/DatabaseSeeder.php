@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         // Panggil seeder WilayahSeed
         $this->call(WilayahSeed::class);
         $this->call(itemDescSeeder::class);
+        $this->call(SetItemDesPaketSeeder::class);
         // $this->call(TypePaketSeeder::class);
         // $this->call(PaketSeeder::class);
         $this->call(BlogSeed::class);

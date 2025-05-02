@@ -100,19 +100,21 @@
 @endsection
 
 @section('content')
-    <form id="regForm" action="{{ url('api/paket') }}" method="post" enctype="multipart/form-data">
+    <form id="regForm" action="{{ url('cms/paket/store') }}" method="post" enctype="multipart/form-data">
         <h1>Tambah Paket Baru</h1>
         @csrf
         <div class="tab">Informasi Utama:
             <div class="form-group">
                 <label for="paket_id">Jenis Paket *</label>
-                <input type="text" class="form-control" name="typePaket_id" id="typePaket_id" value="{{$typePaket->name}}"
+                <input type="text" class="form-control"  id="typePaket_id" value="{{$typePaket->name}}"
                 placeholder="typePaket" required disabled>
             </div>
 
             <div class="form-group">
+                <input type="hidden" name="wilayah_id"  value="{{$wilayah->id}}">
+                <input type="hidden" name="paket_id"  value="{{$typePaket->id}}">
                 <label for="wilayah_id">Wilayah *</label>
-                <input type="text"  class="form-control" name="wilayah_id" id="wilayah_id" value="{{$wilayah->name}}"
+                <input type="text"  class="form-control"   id="wilayah_id" value="{{$wilayah->name}}"
                     placeholder="Wilayah" required disabled>
             </div>
 
@@ -171,7 +173,7 @@
             </div>
         </div>
 
-        <div class="tab">Informasi Tambahan:
+        <div class="tab"> 
             <div class="form-group">
                 <label>Transportasi</label>
                 <div class="form-check">
