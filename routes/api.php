@@ -31,7 +31,7 @@ Route::post('/paket', [PaketController::class, 'store'])->name('paket.store');
 Route::get('/paket/{paket}', [PaketController::class, 'show'])->name('paket.show');
 Route::post('/paket/update/{paket}', [PaketController::class, 'update'])->name('paket.update');
 Route::delete('/paket/{paket}', [PaketController::class, 'destroy'])->name('paket.destroy');
-Route::get('/type-paket', [TypePaketController::class, 'index'])->name('type-paket'); 
+Route::get('/type-paket', [TypePaketController::class, 'index'])->name('api.type-paket'); 
 Route::get('/wilayah', [WilayahController::class, 'index'])->name('api.wilayah'); 
 Route::get('/wilayah/paket', [WilayahController::class, 'paket'])->name('api.wilayah.paket'); 
 
