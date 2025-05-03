@@ -139,6 +139,8 @@
                         <ul id="paket-list">
                         </ul>
                     </li>
+                    <li><a href="{{ route('cms.sewa_transportasi.index') }}"><i class="ti-gallery"></i><span>Sewa Kendaraan</span></a>
+                    </li>
                     <li><a href="{{ route('cms.ruang.media') }}"><i class="ti-gallery"></i><span>Ruang Media</span></a>
                     </li>
                     <li>
@@ -146,6 +148,7 @@
                         <ul>
                             <li><a href="{{ route('cms.banner') }}"><i class="ti-image"></i>Banner</a></li>
                             <li><a href="{{ route('cms.tes_timoni') }}"><i class="ti-image"></i>Tes Timoni</a></li>
+                            <li><a href="{{ route('cms.our_clean.index') }}"><i class="ti-image"></i>Our Clean</a></li> 
                             <li><a href="{{ route('cms.setting') }}"><i class="ti-settings"></i>Setting</a></li>
                         </ul>
                     </li>

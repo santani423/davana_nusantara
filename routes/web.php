@@ -4,9 +4,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CmsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OurCleanController;
 use App\Http\Controllers\PaketTurUmumController;
 use App\Http\Controllers\RuangMediaController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SewaTransportasiController;
 use App\Http\Controllers\TesTimoniController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,10 +28,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index'])->name('home');  
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('paket', PaketTurUmumController::class);
 Route::resource('ruang-media', RuangMediaController::class);
-Route::get('/about-as', [HomeController::class, 'abautAs'])->name('about.as');  
+Route::get('/about-as', [HomeController::class, 'abautAs'])->name('about.as');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -63,6 +65,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/cms/tes_timoni/edit/{id}', [TesTimoniController::class, 'edit'])->name('cms.tes_timoni.edit');
     Route::put('/cms/tes_timoni/update/{id}', [TesTimoniController::class, 'update'])->name('cms.tes_timoni.update');
     Route::delete('/cms/tes_timoni/edit/{id}', [TesTimoniController::class, 'destroy'])->name('cms.tes_timoni.destroy');
+    Route::prefix('cms')
+        ->name('cms.')            // <-- menambahkan prefix nama route
+        ->group(function () {
+            Route::resource('our_clean', OurCleanController::class);
+            Route::resource('sewa_transportasi', SewaTransportasiController::class);
+        });
+
+
 
     Route::get('/cms/setting', [SettingController::class, 'index'])->name('cms.setting');
     Route::put('/cms/setting', [SettingController::class, 'update'])->name('cms.setting.update');
