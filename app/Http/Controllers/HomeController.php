@@ -7,6 +7,7 @@ use App\Models\Banner;
 use App\Models\OurClean;
 use App\Models\Paket;
 use App\Models\RuangMedia;
+use App\Models\TesTimoni;
 use App\Models\TourPackage;
 use App\Models\TypePaket;
 use Illuminate\Http\Request;
@@ -44,5 +45,26 @@ class HomeController extends Controller
             $count[$key]['id'] = $value->id;
         } 
         return view('about-as', compact('aboutAs', 'typePaket', 'count'));
+    }
+    function ourClean()
+    {
+        $aboutAs = AboutUs::first();
+        $typePaket = TypePaket::get();
+        $count = [];
+        foreach ($typePaket as $key => $value) {
+            $paket = DB::table('pakets')
+                ->where('type_paket_id', $value->id)
+                ->count();
+            $count[$key]['type_paket'] = $value->name;
+            $count[$key]['count'] = $paket;
+            $count[$key]['id'] = $value->id;
+        } 
+        return view('outr-clean', compact('aboutAs', 'typePaket', 'count'));
+    }
+    function tesTimoni()
+    {
+        $testimonis = TesTimoni::get();
+        
+        return view('tes-timoni', compact('testimonis'));
     }
 }

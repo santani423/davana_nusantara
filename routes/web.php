@@ -33,6 +33,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('paket', PaketTurUmumController::class);
 Route::resource('ruang-media', RuangMediaController::class);
 Route::get('/about-as', [HomeController::class, 'abautAs'])->name('about.as');
+Route::get('/our-clean', [HomeController::class, 'ourClean'])->name('our.clean');
+Route::get('/tes-timoni', [HomeController::class, 'tesTimoni'])->name('tes.timoni');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');

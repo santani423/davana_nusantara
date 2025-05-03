@@ -75,6 +75,7 @@
                                                     <li><a href="{{route('paket.index')}}" style="text-decoration: none;">Paket Tur</a></li>
                                                     {{-- <li><a href="{{route('ruang-media.index')}}" style="text-decoration: none;">Paket Educational Trip</a></li> --}}
                                                     <li><a href="{{route('ruang-media.index')}}" style="text-decoration: none;">Ruang Media</a></li>
+                                                    <li><a href="{{route('tes.timoni')}}" style="text-decoration: none;">Testimoni</a></li>
                                                     <li><a href="{{route('about.as')}}" style="text-decoration: none;">Tentang Kami</a></li>
                                                     </ul>
                                                 </div>
