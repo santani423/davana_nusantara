@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CmsController;
@@ -70,6 +71,7 @@ Route::middleware('auth')->group(function () {
         ->group(function () {
             Route::resource('our_clean', OurCleanController::class);
             Route::resource('sewa_transportasi', SewaTransportasiController::class);
+            Route::resource('about_us', AboutUsController::class);
         });
 
 

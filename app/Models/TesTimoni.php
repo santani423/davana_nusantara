@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class TesTimoni extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 }

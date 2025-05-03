@@ -16,6 +16,6 @@ class TypePaket extends Model
     // Mengizinkan semua field untuk mass assignment (hati-hati untuk keamanan)
     protected $guarded = [];
  
-
+    
        
 }

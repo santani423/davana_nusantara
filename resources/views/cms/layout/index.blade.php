@@ -149,6 +149,7 @@
                             <li><a href="{{ route('cms.banner') }}"><i class="ti-image"></i>Banner</a></li>
                             <li><a href="{{ route('cms.tes_timoni') }}"><i class="ti-image"></i>Tes Timoni</a></li>
                             <li><a href="{{ route('cms.our_clean.index') }}"><i class="ti-image"></i>Our Clean</a></li> 
+                            <li><a href="{{ route('cms.about_us.index') }}"><i class="ti-settings"></i>About Us</a></li>
                             <li><a href="{{ route('cms.setting') }}"><i class="ti-settings"></i>Setting</a></li>
                         </ul>
                     </li>
