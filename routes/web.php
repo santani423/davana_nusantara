@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaketTurUmumController;
 use App\Http\Controllers\RuangMediaController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TesTimoniController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -55,6 +56,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/cms/Banner', [BannerController::class, 'index'])->name('cms.banner');
     Route::get('/cms/Banner/create', [BannerController::class, 'create'])->name('cms.banner.create');
     Route::get('/cms/Banner/edit/{banner}', [BannerController::class, 'edit'])->name('cms.banner.edit');
+
+    Route::get('/cms/tes_timoni', [TesTimoniController::class, 'index'])->name('cms.tes_timoni');
+    Route::get('/cms/tes_timoni/create', [TesTimoniController::class, 'create'])->name('cms.tes_timoni.create');
+    Route::post('/cms/tes_timoni/store', [TesTimoniController::class, 'store'])->name('cms.tes_timoni.store');
+    Route::get('/cms/tes_timoni/edit/{id}', [TesTimoniController::class, 'edit'])->name('cms.tes_timoni.edit');
+    Route::put('/cms/tes_timoni/update/{id}', [TesTimoniController::class, 'update'])->name('cms.tes_timoni.update');
+    Route::delete('/cms/tes_timoni/edit/{id}', [TesTimoniController::class, 'destroy'])->name('cms.tes_timoni.destroy');
 
     Route::get('/cms/setting', [SettingController::class, 'index'])->name('cms.setting');
     Route::put('/cms/setting', [SettingController::class, 'update'])->name('cms.setting.update');
