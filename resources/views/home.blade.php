@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div class="mt-4 text-center">
-                    <a href="{{route('paket.index')}}" class="btn btn-success btn-lg rounded-pill">Explore Now</a>
+                    <a href="{{ route('paket.index') }}" class="btn btn-success btn-lg rounded-pill">Explore Now</a>
                 </div>
             </div>
 
@@ -192,13 +192,13 @@
                                                 </svg>
                                                 {{ $item->wilayah->name }}</span>
                                             <h3 class="title-tour-list">
-                                                <p  
+                                                <p
                                                     style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; color: #000; font-weight: bold;">
                                                     {{ $item->name }}
                                                 </p>
                                             </h3>
 
-                                            
+
                                             <div class="row">
                                                 <div class="col-8">
                                                     <p style="color: gray;">Start From</p>
@@ -275,24 +275,24 @@
                         <div class="swiper-wrapper">
                             @foreach ($ruangMedia as $item)
                                 <a href="{{ route('ruang-media.show', $item->code) }}">
-                                <div class="swiper-slide">
-                                    <div class="tour-listing box-sd">
-                                        <p
-                                            class="tour-listing-image">
+                                    <div class="swiper-slide">
+                                        <div class="tour-listing box-sd">
+                                            <p class="tour-listing-image">
 
-                                            <img src="{{ asset($item->thumbnail_img) }}" alt="Image Listing">
+                                                <img src="{{ asset($item->thumbnail_img) }}" alt="Image Listing">
 
-                                        </p>
-                                        <div class="tour-listing-content">
+                                            </p>
+                                            <div class="tour-listing-content">
 
-                                            <h3 class="title-tour-list "><a class="text-black" style="text-decoration: none;" 
-                                                    href="{{ route('ruang-media.show', $item->code) }}">{{ $item->title }}</a>
-                                            </h3>
-                                            <p>{{ $item->created_at->format('M d, Y') }}</p>
+                                                <h3 class="title-tour-list "><a class="text-black"
+                                                        style="text-decoration: none;"
+                                                        href="{{ route('ruang-media.show', $item->code) }}">{{ $item->title }}</a>
+                                                </h3>
+                                                <p>{{ $item->created_at->format('M d, Y') }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
                             @endforeach
                         </div>
                     </div>
@@ -305,6 +305,33 @@
         </div>
     </section>
     <!-- Widget Top this Week -->
+    <!-- Widget destination -->
+    <section class="widget-destination1 pd-main relative">
+        <div class="tf-container">
+            <div class="row mb-50 z-index3 relative">
+
+                <div class="col-lg-12">
+                    <div class="mb-37 center">
+
+                        <h3 class="text-black">Our Clean</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="destination-grid z-index3 relative">
+                @foreach ($ourClean as $item)
+                    <div class="destination-tour center wow fadeInUp animated " id="out_clean" data-wow-delay="0.1s">
+
+                        <img src="{{ asset('storage/'.$item->img) }}" alt="" width="10%" height="10%">
+
+                        <div class="title-tour">
+                            {{ $item->name }}
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <!-- Widget destination -->
 @endsection
 
 
@@ -313,19 +340,21 @@
         .swiper-button-next {
             background-image: url('{{ asset('assets/icons/chevron-right.svg') }}');
             /* ganti dengan icon kamu */
-            background-size: 30px 30px; /* Atur ukuran background */
+            background-size: 30px 30px;
+            /* Atur ukuran background */
             background-repeat: no-repeat;
             background-position: center;
         }
 
         .swiper-button-next::after {
-            display: none; 
+            display: none;
         }
 
         .swiper-button-prev {
             background-image: url('{{ asset('assets/icons/chevron-left.svg') }}');
             /* ganti dengan icon kamu */
-            background-size: 30px 30px; /* Atur ukuran background */
+            background-size: 30px 30px;
+            /* Atur ukuran background */
             background-repeat: no-repeat;
             background-position: center;
         }
