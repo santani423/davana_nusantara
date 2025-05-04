@@ -111,7 +111,7 @@
                                             <td>{{ $index + 1 }}</td>
                                             <td>
                                                 @if ($item->foto)
-                                                    <img src="{{ asset('storage/' . $item->foto) }}" alt="Foto"
+                                                    <img src="{{ asset(  $item->foto) }}" alt="Foto"
                                                         width="80">
                                                 @else
                                                     <span class="text-muted">Tidak ada foto</span>
@@ -215,6 +215,8 @@
                                 </tbody>
                             </table>
                         </div>
+                         <hr>
+         
                         <!-- End Table -->
                     </div>
                 </div>
@@ -222,3 +224,118 @@
         </div>
     </div>
 @endsection
+
+@section('script')
+    <script>
+        $(document).ready(function() {
+            function show(page = 1, wilayah_id = null) {
+                $.ajax({
+                    url: '{{ route('api.transportasi') }}',
+                    method: 'GET',
+                    data: { page: page, wilayah_id: wilayah_id },
+                }).done(function(response) {
+                    const data = response?.data?.data || [];
+                    const currentPage = response?.data?.current_page || 1;
+                    const lastPage = response?.data?.last_page || 1;
+                    const container = $('#paket-list');
+                    container.empty();
+
+                    data.forEach(function(item) {
+                        const html = `
+                            <div class="col-md-3 mb-3">
+                                <div class="tour-listing box-sd">
+                                    <a href="{{ route('ruang-media.show', '') }}/${item.code}" class="tour-listing-image">
+                                        <img src="${item.thumbnail_img}" alt="${item.title}" class="img-fluid">
+                                    </a>
+                                    <div class="tour-listing-content">
+                                        <span class="map">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock me-2" viewBox="0 0 16 16">
+                                                <path d="M8 3.5a.5.5 0 0 1 .5.5v4h3a.5.5 0 0 1 0 1H8a.5.5 0 0 1-.5-.5V4a.5.5 0 0 1 .5-.5z"/>
+                                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1A7 7 0 1 1 8 1a7 7 0 0 1 0 14z"/>
+                                            </svg>
+                                            ${new Date(item?.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) || 'Unknown'}
+                                        </span>
+                                        <h3 class="title-tour-list">
+                                            <a href="{{ route('paket.show', '') }}/${item.code}">${item.title}</a>
+                                        </h3>
+                                        <div class="review" style="max-height: 100px; overflow: hidden; text-overflow: ellipsis;">
+                                             ${item.resume}  
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>`;
+                        container.append(html);
+                    });
+
+                    // Update pagination
+                    const paginationContainer = $('.pagination');
+                    paginationContainer.empty();
+
+                    let startPage = Math.max(currentPage - 2, 1);
+                    let endPage = Math.min(currentPage + 2, lastPage);
+
+                    // Tombol Previous
+                    if (currentPage > 1) {
+                        paginationContainer.append(`
+                            <li class="page-item">
+                                <a class="page-link" href="#" data-page="${currentPage - 1}">«</a>
+                            </li>
+                        `);
+                    }
+
+                    // Halaman Dinamis
+                    for (let i = startPage; i <= endPage; i++) {
+                        paginationContainer.append(`
+                            <li class="page-item ${i === currentPage ? 'active' : ''}">
+                                <a class="page-link" href="#" data-page="${i}">${i}</a>
+                            </li>
+                        `);
+                    }
+
+                    // Tombol Next
+                    if (currentPage < lastPage) {
+                        paginationContainer.append(`
+                            <li class="page-item">
+                                <a class="page-link" href="#" data-page="${currentPage + 1}">»</a>
+                            </li>
+                        `);
+                    }
+                }).fail(function(xhr, status, error) {
+                    console.error('Error:', error);
+                });
+            }
+
+            // Handle pagination click + Scroll ke atas
+            $(document).on('click', '.pagination .page-link', function(e) {
+                e.preventDefault();
+                const page = $(this).data('page');
+                const wilayah_id = $('.nav-link.active').data('id');
+                if (page) {
+                    show(page, wilayah_id);
+
+                    // Scroll ke atas dengan efek animasi
+                    $('html, body').animate({
+                        scrollTop: $('#paket-list').offset().top - 100
+                    }, 500);
+                }
+            });
+
+            // Handle wilayah click
+            $(document).on('click', '.nav-link', function(e) {
+                e.preventDefault();
+                $('.nav-link').removeClass('active');
+                $(this).addClass('active');
+                const wilayah_id = $(this).data('id');
+                show(1, wilayah_id);
+
+                // Scroll ke atas dengan efek animasi
+                $('html, body').animate({
+                    scrollTop: $('#paket-list').offset().top - 100
+                }, 500);
+            });
+
+            show(); // Load data on page load
+        });
+    </script>
+@endsection
+

@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\PaketController;
 use App\Http\Controllers\Api\RuangMediaController;
 use App\Http\Controllers\Api\SettingController;
+use App\Http\Controllers\Api\TransportasiController;
 use App\Http\Controllers\Api\TypePaketController;
 use App\Http\Controllers\Api\WilayahController;
 use Illuminate\Http\Request;
@@ -34,6 +35,9 @@ Route::delete('/paket/{paket}', [PaketController::class, 'destroy'])->name('pake
 Route::get('/type-paket', [TypePaketController::class, 'index'])->name('api.type-paket'); 
 Route::get('/wilayah', [WilayahController::class, 'index'])->name('api.wilayah'); 
 Route::get('/wilayah/paket', [WilayahController::class, 'paket'])->name('api.wilayah.paket'); 
+
+Route::get('/transportasi', [TransportasiController::class, 'index'])->name('api.transportasi');
+Route::get('/transportasi/{id}', [TransportasiController::class, 'view'])->name('api.transportasi.view'); 
 
 Route::get('/ruang-media', [RuangMediaController::class, 'index'])->name('ruangMedia.index');
 Route::post('/ruang-media', [RuangMediaController::class, 'store'])->name('ruang-media.store');

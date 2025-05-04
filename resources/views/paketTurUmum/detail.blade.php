@@ -211,7 +211,7 @@
             message += `🧒 *Anak-anak*: ${children}\n`;
             message += `🏨 *Hotel Bintang*: ${hotelRatingVal ? hotelRatingVal : 'Belum dipilih'}`;
 
-            const phoneNumber = '6285218898727'; // Ganti dengan nomor admin Anda
+            const phoneNumber = '6285716828111'; // Ganti dengan nomor admin Anda
             const encodedMessage = encodeURIComponent(message);
             const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 

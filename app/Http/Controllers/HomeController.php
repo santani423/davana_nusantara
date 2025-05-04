@@ -67,4 +67,18 @@ class HomeController extends Controller
         
         return view('tes-timoni', compact('testimonis'));
     }
+
+    function sewaTransportasi()
+    {
+      
+        return view('sewaTransportasi.index');
+    }
+
+    function showSewaTransportasi($id)
+    {
+        $sewaTransportasi = DB::table('sewa_transportasis')
+            ->where('id', $id)
+            ->first();
+        return view('sewaTransportasi.show', compact('sewaTransportasi'));
+    }
 }

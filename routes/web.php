@@ -35,6 +35,8 @@ Route::resource('ruang-media', RuangMediaController::class);
 Route::get('/about-as', [HomeController::class, 'abautAs'])->name('about.as');
 Route::get('/our-clean', [HomeController::class, 'ourClean'])->name('our.clean');
 Route::get('/tes-timoni', [HomeController::class, 'tesTimoni'])->name('tes.timoni');
+Route::get('/sewa_transportasi', [HomeController::class, 'sewaTransportasi'])->name('sewa.transportasi');
+Route::get('/sewa_transportasi/{id}', [HomeController::class, 'showSewaTransportasi'])->name('sewa.transportasi.show');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
