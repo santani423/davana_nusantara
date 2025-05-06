@@ -327,7 +327,7 @@
                             {{ $item->name }}
                         </div>
                     </div>
-                @endforeach
+                @endforeach 
             </div>
         </div>
     </section>

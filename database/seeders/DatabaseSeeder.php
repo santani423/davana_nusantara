@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(LdksSeeder::class);
         $this->call(paketStudySeeder::class);
+        $this->call(PaketOutbond::class);
         $this->call(WisataSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(TourPackageSeeder::class);

@@ -18,6 +18,7 @@ class itemDescSeeder extends Seeder
             ['name' => 'Fasilitas', 'code' => 'fts', 'img' => 'assets/item/group126.png'],
             ['name' => 'Kegiatan', 'code' => 'kgt', 'img' => 'assets/item/group126.png'],
             ['name' => 'Destinasi', 'code' => 'des', 'img' => 'assets/item/group126.png'],
+            // ['name' => 'OUTBOUND', 'code' => 'des', 'img' => 'assets/item/group126.png'],
         ]);
         // DB::table('item_descs')->insert([
         //     ['name' => 'Destinasi', 'code' => 'des'],
