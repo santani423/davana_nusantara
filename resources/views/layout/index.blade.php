@@ -51,8 +51,7 @@
             <header class="main-header flex">
                 <!-- Header Lower -->
                 <div id="header">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light container
-                        <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-white container ">
                             <div class="d-flex align-items-center w-100">
                                 <div class="logo-box" style="margin-right: auto; text-align: left;">
                                     <a href="{{ route('home') }}">
