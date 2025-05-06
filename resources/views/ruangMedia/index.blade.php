@@ -122,7 +122,7 @@
             $(document).on('click', '.pagination .page-link', function(e) {
                 e.preventDefault();
                 const page = $(this).data('page');
-                const wilayah_id = $('.nav-link.active').data('id');
+                const wilayah_id = $('.nav-link-item.active').data('id');
                 if (page) {
                     show(page, wilayah_id);
 
@@ -134,9 +134,9 @@
             });
 
             // Handle wilayah click
-            $(document).on('click', '.nav-link', function(e) {
+            $(document).on('click', '.nav-link-item', function(e) {
                 e.preventDefault();
-                $('.nav-link').removeClass('active');
+                $('.nav-link-item').removeClass('active');
                 $(this).addClass('active');
                 const wilayah_id = $(this).data('id');
                 show(1, wilayah_id);

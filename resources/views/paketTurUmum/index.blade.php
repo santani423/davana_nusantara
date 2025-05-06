@@ -29,11 +29,11 @@
                     <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#" data-id="">Semua</a>
+                                <a class="nav-link-item active" aria-current="page" href="#" data-id="">Semua</a>
                             </li>
                             @foreach ($wilayah as $wl)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-id="{{ $wl->id }}">{{ $wl->name }}</a>
+                                    <a class="nav-link-item" href="#" data-id="{{ $wl->id }}">{{ $wl->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -196,7 +196,7 @@
             $(document).on('click', '.pagination .page-link', function(e) {
                 e.preventDefault();
                 const page = $(this).data('page');
-                const wilayah_id = $('.nav-link.active').data('id');
+                const wilayah_id = $('.nav-link-item.active').data('id');
                 if (page) {
                     show(page, wilayah_id);
 
@@ -208,9 +208,9 @@
             });
 
             // Handle wilayah click
-            $(document).on('click', '.nav-link', function(e) {
+            $(document).on('click', '.nav-link-item', function(e) {
                 e.preventDefault();
-                $('.nav-link').removeClass('active');
+                $('.nav-link-item').removeClass('active');
                 $(this).addClass('active');
                 const wilayah_id = $(this).data('id');
                 show(1, wilayah_id);
