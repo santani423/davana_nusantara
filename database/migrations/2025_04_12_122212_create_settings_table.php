@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('google_map')->nullable(); // Google Map website
             $table->string('whatsapp')->nullable(); // Nomor WhatsApp website
             $table->string('instagram')->nullable(); // Akun Instagram website
-            $table->string('facebook')->nullable(); // Akun Facebook website
+            // $table->string('facebook')->nullable(); // Akun Facebook website
             $table->string('twitter')->nullable(); // Akun Twitter website
             $table->string('youtube')->nullable(); // Akun YouTube website
             $table->string('tiktok')->nullable(); // Akun TikTok website

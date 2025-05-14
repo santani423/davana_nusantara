@@ -178,7 +178,7 @@
                                 <ul class="social-ft flex-three mt-4" style="gap: 15px; display: flex;">
                                     <li id="instagram"></li>
                                     <li id="tiktok"></li>
-                                    <li id="facebook"></li>
+                                    {{-- <li id="facebook"></li> --}}
                                     <li id="youtube"></li>
                                 </ul>
 
@@ -260,11 +260,11 @@
                                              <img src="{{ asset('assets/item/tiktok.png') }}" style="width: 30px;" class="ml-2" alt="">   
                                         
                                     </a>`;
-                    let facebook = document.getElementById('facebook');
-                    facebook.innerHTML = ` <a href="mailto:${settings.facebook}" class="flex-three text-white" style="text-decoration: none; color: black;">
-                                             <img src="{{ asset('assets/item/facebook.png') }}" style="width: 30px;" class="ml-2" alt="">   
+                    // let facebook = document.getElementById('facebook');
+                    // facebook.innerHTML = ` <a href="mailto:${settings.facebook}" class="flex-three text-white" style="text-decoration: none; color: black;">
+                    //                          <img src="{{ asset('assets/item/facebook.png') }}" style="width: 30px;" class="ml-2" alt="">   
                                         
-                                    </a>`;
+                    //                 </a>`;
                     let youtube = document.getElementById('youtube');
                     youtube.innerHTML = ` <a href="mailto:${settings.youtube}" class="flex-three text-white" style="text-decoration: none; color: black;">
                                              <img src="{{ asset('assets/item/youtube.png') }}" style="width: 40px;" class="ml-2" alt=""> 
