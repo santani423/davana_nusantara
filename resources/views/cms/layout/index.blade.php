@@ -133,7 +133,7 @@
                 </div>
                 <ul id="main-menu" class="metismenu">
                     <li class="g_heading">Main</li>
-                    <li><a href="index.html"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
+                    <li><a href="{{ route('cms') }}"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
                     <li>
                         <a href="javascript:void(0)" class="has-arrow"><i class="ti-package"></i><span>Paket</span></a>
                         <ul id="paket-list">

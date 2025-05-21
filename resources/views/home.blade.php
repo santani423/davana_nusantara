@@ -313,7 +313,7 @@
                 <div class="col-lg-12">
                     <div class="mb-37 center">
 
-                        <h3 class="text-black">Our Cleant</h3>
+                        <h3 class="text-black">Our Client</h3>
                     </div>
                 </div>
             </div>
