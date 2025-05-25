@@ -16,6 +16,7 @@ return new class extends Migration
             
             // Data umum mitra kerja sama
             $table->string('name');                           // Nama mitra
+            $table->integer('kategori_our_clien_id');                           // Nama mitra
             $table->string('img')->nullable();            // Nama perusahaan (jika berbeda)
             $table->string('company')->nullable();            // Nama perusahaan (jika berbeda)
             $table->string('contact_person')->nullable();     // Nama kontak person

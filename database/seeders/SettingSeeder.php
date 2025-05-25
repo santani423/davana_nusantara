@@ -25,7 +25,7 @@ class SettingSeeder extends Seeder
             'instagram' => 'https://instagram.com/davananusantara',
             // 'facebook' => 'https://facebook.com/davananusantara',
             'twitter' => 'https://twitter.com/davananusantara',
-            'youtube' => 'https://youtube.com/davananusantara',
+            'youtube' => 'https://www.youtube.com/@dn_tour',
             'tiktok' => 'https://tiktok.com/@davananusantara',
             'email' => 'daffanacv@gmail.com',
             // 'linkedin' => 'https://linkedin.com/company/davananusantara',
